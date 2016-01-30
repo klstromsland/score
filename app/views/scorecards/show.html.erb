@@ -1,0 +1,130 @@
+<div class="container">
+	<p id="notice"><%= notice %></p>
+	<h1 id="h1"><%= @scorecard.event.title %> K9 Nose Work Trial Scorecard</h1>
+	<div id="bdr"></div>
+	<div class="row">
+		<div class="col-xs-3">
+			<h4 id="h4bold">Event Title: <%= @scorecard.event.title %></h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold">Location: <%= @scorecard.event.place %></h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold">Date: <%= @scorecard.event.date %></h4> 
+		</div>  
+		<div class="col-xs-3">
+			<h4 id="h4bold">Division: <%= @scorecard.event.division %></h4> 
+		</div>
+	</div>
+	<div id="bdr"></div>
+	<div class="row">
+		<div class="col-xs-4">
+			<h4 id="h4bold">Element: <%= @scorecard.element %> <%= @scorecard.search_area %></h4> 
+		</div>
+		<div class="col-xs-4">
+			<h4 id="h4bold">Point Value: <%= @scorecard.maxpoint %></h4> 
+		</div>
+		<div class="col-xs-4">
+			<h4 id="h4bold">Time Limit: <%= @scorecard.maxtime_m %>:<%= @scorecard.maxtime_s %>:<%= @scorecard.maxtime_ms %></h4> 
+		</div>  
+	</div>
+	<div id="bdr"></div>
+	<% @scorecard.event.entrants.each do |entrant| %>
+		<% if @scorecard.entrant_scd_id == entrant.id %>
+			<div class="row">
+				<div class="col-xs-8">
+					<h4 id="h4bold">Handler Name: <%= entrant.first_name %> <%= entrant.last_name %></h4> 
+				</div>
+				<div class="col-xs-4">
+					<h4 id="h4bold">ID: <%= entrant.idnumber %></h4> 
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<h4 id="h4bold">K9 Name: <%= entrant.dog_name %></h4> 
+				</div>
+				<div class="col-xs-4">
+					<h4 id="h4bold">K9 Breed: <%= entrant.breed %></h4> 
+				</div>
+				<div class="col-xs-4">
+					<h4 id="h4bold">K9 ID: <%= entrant.dogidnumber %></h4> 
+				</div>
+			</div>
+			<div id="bdr"></div>
+		<% end %>
+	<% end %>
+	<div class="row">
+		<div class="col-xs-3">
+			<p>Search Area: <%= @scorecard.search_area %></p> 
+		</div>
+		<div class="col-xs-3">
+			<p>Search Area Hides: <%= @scorecard.hides_max %></p> 
+		</div>
+		<div class="col-xs-3">
+			<p>Hides found: <%= @scorecard.hides_found %></p> 
+		</div>
+		<div class="col-xs-3">
+			<p>Hides missed: <%= @scorecard.hides_missed %></p> 
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<p>Finish call: <%= @scorecard.finish_call %></p> 
+		</div>
+		<div class="col-xs-3">
+			<p>False alert/fringe: <%= @scorecard.false_alert_fringe %></p> 
+		</div>
+		<div class="col-xs-3">
+			<p>Timed out: <%= @scorecard.timed_out %></p> 
+		</div>
+		<div class="col-xs-3">
+			<p>Eliminated during search: <%= @scorecard.eliminated_during_search %></p> 
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<p>Dismissed: <%= @scorecard.dismissed %></p> 
+		</div>
+		<div class="col-xs-3">
+			<p>Excused: <%= @scorecard.excused %></p> 
+		</div>
+		<div class="col-xs-3">
+			<p>Absent: <%= @scorecard.absent %></p> 
+		</div>
+	</div>
+	<p>Other faults descr: <%= @scorecard.other_faults_descr %></p>
+	<p>Other faults count:  <%= @scorecard.other_faults_count %></p>
+	<p>Comments: <%= @scorecard.comments %></p>
+	<div id="bdr"></div>
+	<div class="row" id="center">
+		<div class="col-xs-3">
+			<h4 id="h4bold">Time</h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold">Points</h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold">Pronounced</h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold">Faults</h4> 
+		</div>
+	</div>
+	<div class="row" id="center">
+		<div class="col-xs-3">
+			<h4 id="h4bold"><%= @scorecard.time_elapsed_m %>:<%= @scorecard.time_elapsed_s %>:<%= @scorecard.time_elapsed_ms %></h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold"><%= @scorecard.total_points %></h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold"><%= @scorecard.pronounced %></h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold"><%= @scorecard.total_faults %></h4> 
+		</div>
+	</div>
+	<div id="bdr"></div>
+	<h4 id="h4bold">Judge signature: <%= @scorecard.judge_signature %></h4>
+		<p class="linktop"><%= link_to "Back to Event", event_path( @scorecard.event ) %> | <%= link_to_unless(@scorecard.event.status == "closed", "Edit Scorecard", edit_scorecard_path(@scorecard)) %></p>
+</div>

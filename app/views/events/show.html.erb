@@ -1,0 +1,345 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+	<div class="row">
+	  <div class="col-xs-6">
+			<h1 id="h1"><%= @event.title %>, <%= @event.place %></h2>
+		</div>
+		  <div class="col-xs-6">
+			<h2 id="h2right">Date: <%= @event.date %></h2>
+		</div>
+	</div>
+  <div id="bdr"></div>
+  <div class="row">
+    <div class="col-xs-4">		
+			<h4 id="h4bold">Division:  <%= @event.division %></h4>
+		</div>
+    <div class="col-xs-4">		
+			<h4 id="h4bold">Host:  <%= @event.host %></h4>
+		</div>		
+    <div class="col-xs-4">
+			<% if @event.status=="active" %>
+				<h4 id="h4boldright">Status: <span style="color:#72a54d"><%= @event.status %></span></h4>
+			<% else %>
+				<h4 id="h4boldright">Status: <span style="color:#bf3d5b"><%= @event.status %></span></h4>
+			<% end %>
+		</div>
+	</div>
+  <div id="bdr"></div>
+  <div class="row">
+    <div class="col-xs-1">
+			<ul>
+				<li id="bold">Element</li>
+				<% if @event.int_search_areas > 0 %>
+					<li>Interior</li>
+				<% end %>
+				<% if @event.ext_search_areas > 0 %>
+					<li>Exterior</li>
+				<% end %>
+				<% if @event.cont_search_areas > 0 %>	
+					<li>Container</li>
+				<% end %>
+				<% if @event.veh_search_areas > 0 %>
+					<li>Vehicle</li>
+				<% end %>
+				<% if @event.elite_search_areas > 0 %>
+					<li>Elite</li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="col-xs-2">
+			<ul>
+				<li id="centerbold">Search Areas</li>
+				<% if @event.int_search_areas > 0 %>
+					<li id="center"><%= @event.int_search_areas %></li>
+				<% end %>
+				<% if @event.ext_search_areas > 0 %>
+					<li id="center"><%= @event.ext_search_areas %></li>
+				<% end %>
+				<% if @event.cont_search_areas > 0 %>	
+					<li id="center"><%= @event.cont_search_areas %></li>
+				<% end %>
+				<% if @event.veh_search_areas > 0 %>
+					<li id="center"><%= @event.veh_search_areas %></li>
+				<% end %>
+				<% if @event.elite_search_areas > 0 %>
+					<li id="center"><%= @event.elite_search_areas %></li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="col-xs-2">
+			<ul>
+				<li id="centerbold">Hides</li>
+				<% if @event.int_search_areas > 0 %>
+					<li id="center"><%= @event.int_hides %></li>
+				<% end %>
+				<% if @event.ext_search_areas > 0 %>
+					<li id="center"><%= @event.ext_hides %></li>
+				<% end %>
+				<% if @event.cont_search_areas > 0 %>	
+					<li id="center"><%= @event.cont_hides %></li>
+				<% end %>
+				<% if @event.veh_search_areas > 0 %>
+					<li id="center"><%= @event.veh_hides %></li>
+				<% end %>
+				<% if @event.elite_search_areas > 0 %>
+					<li id="center"><%= @event.elite_hides %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+	<div id="bdr"></div>
+	<div class="row">
+		<div class="col-xs-2">
+			<ul>
+				<% @event.users.each do |user| %>
+					<li id="bold"><%= user.role %>: </li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="col-xs-4">
+			<ul>
+				<% @event.users.each do |user| %>
+					<li><%= user.first_name %> <%= user.last_name %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+	<div id="bdr"></div>
+  <h2 id="h2">Result Summary</h2>
+  <% first_points = 0 %>
+  <% first_faults = 0 %>
+  <% first_time_m = 0 %>
+  <% first_time_s = 0 %>
+  <% first_time_ms = 0 %>
+  <% first_time = 0 %>
+  <% first_title = "" %>
+  <% @event.entrants.each do |entrant| %>
+		<div id="bdr"></div>
+		<h4 id="h4bold"><%= entrant.first_name %> <%= entrant.last_name %> and <%= entrant.dog_name %></h4>
+		<div id="bdr"></div>
+		<div class="row">
+			<div class="col-xs-2">				
+				<p class="evshowb">Link</p>
+			</div>
+			<div class="col-xs-2">				
+				<p class="evshowb" id="center">Total Points</p>
+			</div>					
+			<div class="col-xs-2">				
+				<p class="evshowb" id="center">Total Time</p>
+			</div>				
+			<div class="col-xs-2">				
+				<p class="evshowb" id="center">Total Faults</p>
+			</div>				
+			<div class="col-xs-2">				
+				<p class="evshowb" id="center">Qualifying Score</p>
+			</div>				
+			<div class="col-xs-2">				
+				<p class="evshowb" id="center">Qualifying Scores</p>
+			</div>
+		</div>
+		<% @event.tallies.each do |tally| %>
+			<% if tally.entrant_tly_id == entrant.id %>
+			<div class="row"  id="rowbdrbtm">
+				<div class="col-xs-2">
+					<p class="link"><%= link_to "Tally", tally_path(tally) %></p>
+				</div>
+				<div class="col-xs-2">
+					<p id="center"><%= tally.total_points %></p>
+				</div>
+				<div class="col-xs-2">
+					<p id="center"><%= tally.total_time_m %>:<%= tally.total_time_s %>:<%= tally.total_time_ms %></p>
+				</div>
+				<div class="col-xs-2">
+					<p id="center" ><%= tally.total_faults %></p>
+				</div>
+				<div class="col-xs-2">
+					<p id="center"><%= tally.qualifying_score %></p>
+				</div>
+				<div class="col-xs-2">
+					<p id="center"><%= tally.qualifying_scores %></p>
+				</div>
+				<% if first_time == 0 %>
+					<% first_time = (tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10) %>
+				<% end %>
+				<% if tally.total_points == 100 %>
+					<% if tally.total_faults == 0 %>
+						<% if first_time > (tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10) %>
+							<% first_time = tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10 %>
+							<% first_points = 100 %>
+						<% end %>
+					<% end %>
+				<% elsif tally.total_points == 100 %>
+					<% if (tally.total_faults > 0) && (tally.total_faults <= first_faults) %>
+						<% first_faults = tally.total_faults %>
+						<% first_points = 100 %>
+					<% end %>          		  
+					<% if first_time < (tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10) %>
+						<% first_time = tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10 %>
+						<% first_points = 100 %>
+					<% end %>
+				<% else %>
+					<% if first_time < (tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10) %>
+						<% if first_points < tally.total_points %>
+							<% if first_faults < tally.total_faults %>
+								<% first_time = (tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10) %>
+								<% first_points = tally.total_points %>
+								<% first_faults = tally.total_faults %>
+							<% end %>
+						<% end %>	
+					<% elsif first_points.to_i > tally.total_points.to_i %>
+						<% if first_time < (tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10) %>
+							<% if first_faults < tally.total_faults %>
+								<% first_time = tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10 %>
+								<% first_points = tally.total_points %>
+								<% first_faults = tally.total_faults %>
+							<% end %>
+						<% end %>	
+					<% elsif first_faults.to_i < tally.total_faults.to_i %>
+						<% if first_points > tally.total_points %>
+							<% if first_time < (tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10) %>
+								<% first_time = tally.total_time_m.to_i * 60000 + tally.total_time_s.to_i * 1000 + tally.total_time_ms.to_i * 10 %>
+								<% first_points = tally.total_points %>
+								<% first_faults = tally.total_faults %>
+							<% end %>
+						<% end %>	
+					<% end %>	
+					</div>
+					<div class="row">
+						<div class="col-xs-2">
+							<p class="evshow">Update Tally:</p>
+						</div>
+						<div class="col-xs-2">
+							<p class="linktop"><%= link_to_unless(@event.status == "closed", "Tally", edit_tally_path(tally))%></p>
+						</div>
+					</div>
+					<% if tally.title == "Titled" %>
+						<div id="bdr"></div>
+						<h2 id="h2">Titled</h2>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+		<div id="bdr"></div>
+		<p class="evshow">Update Scorecards:</p>
+		<div class="row">
+		<% @event.scorecards.each do |scorecard| %>
+			<% if scorecard.entrant_scd_id == entrant.id %>
+			<div class="col-xs-2">
+				<p class="link" id="center"><%= link_to_unless(@event.status == "closed", scorecard.element + " " + scorecard.search_area.to_s, edit_scorecard_path(scorecard))%></p>
+			</div>
+			<% end %>
+		<% end %>	
+		</div>
+		<div id="bdr"></div>
+		<p class="evshow">View Scorecards: </p>
+		<div class="row" >
+			<div class="col-xs-2">				
+				<p class="evshowb">Link</p>
+			</div>
+			<div class="col-xs-2">				
+				<p class="evshowb" id="center">Points</p>
+			</div>					
+			<div class="col-xs-2">				
+				<p class="evshowb" id="center">Time</p>
+			</div>				
+			<div class="col-xs-2">				
+				<p class="evshowb" id="center">Faults</p>
+			</div>				
+		</div>		
+		<% @event.scorecards.each do |scorecard| %>
+			<% if scorecard.entrant_scd_id == entrant.id %>
+			<div class="row" >
+				<div class="col-xs-2">
+					<p class="link"><%= link_to_unless(@event.status == "closed", scorecard.element + " " + scorecard.search_area.to_s, scorecard_path(scorecard)) %></p>
+				</div>
+				<div class="col-xs-2">
+					<p id="center"><%= scorecard.total_points %></p>
+				</div>
+				<div class="col-xs-2">
+					<p id="center"><%= scorecard.time_elapsed_m %>:<%= scorecard.time_elapsed_s %>:<%= scorecard.time_elapsed_ms %></p>
+				</div>
+				<div class="col-xs-2">
+					<p id="center"><%= scorecard.total_faults %></p>
+				</div> 	
+			</div>
+			<% end %>
+		<% end %>
+	<% end %>
+	<% first_time_ms = first_time % 1000 %>
+	<% if first_time_ms < 1 %>
+		<% first_time_ms = 0 %>
+	<% else %>
+		<% first_time_s = (first_time - first_time_ms)/ 1000 %> 
+		<% if first_time_s < 1 %>
+			<% first_time_s = 0 %>
+		<% else %>
+			<% first_time_m = (first_time_s - (first_time_s % 60))/60 %>
+			<% if first_time_m < 1 %>
+				<% first_time_m = 0 %>
+			<% end %>
+		<% end %>
+	<% end %>
+	<% first_time_ms /= 10 %>
+	<% if first_time_m < 10 %>
+		<% first_time_m = "0" + first_time_m.to_s %>
+	<% else %>
+		<% first_time_m = first_time_m.to_s %>
+	<% end %>	
+	<% if first_time_s < 10 %>
+		<% first_time_s = "0" + first_time_s.to_s %>
+	<% else %>
+		<% first_time_s = first_time_s.to_s %>
+	<% end %>	
+	<% if first_time_ms < 10 %>
+		<% first_time_ms = "0" + first_time_ms.to_s %>
+	<% else %>
+		<% first_time_ms = first_time_ms.to_s %>
+	<% end %>
+	<div id="bdr"></div>
+	<h2 id="h2">Placing</h2>
+	<div id="bdr"></div>
+	<div class="row" >
+		<div class="col-xs-2">				
+			<p class="evshowb">Place</p>
+		</div>
+		<div class="col-xs-2">				
+			<p class="evshowb" id="center">Points</p>
+		</div>					
+		<div class="col-xs-2">				
+			<p class="evshowb" id="center">Time</p>
+		</div>				
+		<div class="col-xs-2">				
+			<p class="evshowb" id="center">Faults</p>
+		</div>				
+		<div class="col-xs-4">				
+			<p class="evshowb" id="center">Team</p>
+		</div>				
+	</div>	
+	<div class="row">
+	<% @event.entrants.each do |entrant| %>
+		<% @event.tallies.each do |tally| %>
+			<% if tally.entrant_tly_id == entrant.id %>
+				<% if (tally.total_points == first_points) && (tally.total_time_m == first_time_m) && (tally.total_time_s == first_time_s) && (tally.total_time_ms == first_time_ms) && (tally.total_faults == first_faults) %>
+					<div class="col-xs-2">
+						<p>First Place</p>
+					</div>				
+					<div class="col-xs-2">
+						<p id="center"><%= first_points %></p>
+					</div>
+					<div class="col-xs-2">
+						<p id="center"><%= first_time_m %>:<%= first_time_s %>:<%= first_time_ms %></p>
+					</div> 
+					<div class="col-xs-2">
+						<p><%= first_faults %></p>
+					</div>
+					<div class = "col-xs-4">
+						<p id="center"><%= entrant.first_name %> <%= entrant.last_name %> and <%= entrant.dog_name %></p>
+					</div>
+				<% end %>	
+			<% end %>
+		<% end %>
+	<% end %>
+	</div>
+	<div id="bdr"></div>
+	<p class="linktop"><%= link_to "Edit Event", edit_event_path(@event) %> | <%= link_to "Back to Events", events_path %></p>
+</div>

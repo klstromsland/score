@@ -1,0 +1,528 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require timer_style
+ *= require bootstrap.min.css
+ */
+
+html, body {
+  margin:0;
+  padding:0; 
+  font-family: 'Roboto', sans-serif;
+}
+
+#wrap {
+  white-space:normal;
+}
+
+#h1 {
+  font-size:36px;
+  font-weight:bold;
+  color:#00217f;
+}
+
+#h1sw {
+  font-size:36px;
+  font-weight:bold;
+  margin:0;
+  padding:0;
+}
+
+#h2 {
+  font-size:30px;
+  font-weight:bold;
+  color:#00217f;
+}
+
+#h2right {
+  font-size:30px;
+  font-weight:bold;
+  color:#00217f;
+  text-align:right;
+}
+
+#h4 {
+  font-size:18px;
+  font-weight:semi-bold;
+  margin:0;
+  padding:0;
+}
+
+#h4bold {
+  font-size:18px;
+  font-weight:bold;
+}
+
+#h4boldright {
+  font-size:18px;
+  font-weight:bold;
+  text-align:right;
+}
+
+#h4boldcenter {
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+}
+
+#bdr {
+  border-bottom:1px solid #00217f;
+  height:10px;
+  margin:0; 
+}
+
+#sniffing {
+  margin:20px 0 15px 0;
+  padding:0; 
+}
+
+#nopad {
+  margin:0 0 0 15px;
+  padding:0;
+  white-space:nowrap;
+}
+
+#right {
+  text-align:right;
+}
+
+#center {
+  text-align:center;
+}
+
+#centerbold{
+  text-align:center;
+  font-weight:bold;
+}
+
+#nomargin{
+  margin:0;
+  padding:0;
+}
+
+#marginedit{
+  margin:10px 0 0 0;
+  padding:0;
+}
+
+#bold{
+  font-weight:bold;
+}
+
+#fontcolor{
+  color:#00217f;
+}
+
+#sw_start{
+  margin:5px 0 0 0;
+}
+
+#stopwatch{
+  background-color:#c5cbdb;
+  text-align:center;
+  border-top:1px solid #00217f;
+  border-bottom:1px solid #00217f;
+  padding:20px 10px 15px 10px;
+  margin:0;
+}
+
+p {
+  font-size:12px;
+  letter-spacing: 0px;
+  white-space:nowrap;
+  margin:0;
+  padding:0;
+}
+
+li {
+  list-style:none;
+  font-size:12px;
+  letter-spacing: 0px;
+  white-space:nowrap;
+  margin:0;
+  padding:0;
+} 
+
+ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+} 
+
+.container{
+  max-width:980px;
+  margin:0;
+  padding:0;
+}
+
+.nav ul{
+  text-align:right;
+  margin:15px 0 0 0;
+  padding:0;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  margin:0;
+  padding:0;
+}
+
+.nav li{
+  color:#fff;
+  list-style:none; 
+  margin:0;
+  padding:0;
+}
+
+.header {
+  background-color:#00217f;
+  height:180px;
+  margin:0;
+  padding:0;
+}
+
+.img{
+  height:110px;
+  width:150px;
+  margin:0;
+  padding:0;
+}
+
+.subheader {
+  background-color:#00217f;
+  height:75px;
+}
+
+.footer {
+  background-color:#00217f;
+  height:100px;
+  margin:10px 0 0 0;
+ }
+ 
+.footer h4{
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  text-align:center;
+  padding:25px 0 0 0;
+}
+ 
+.row {
+  margin:0;
+  padding:0;
+}
+
+.col-xs-1 {
+  margin:0;
+  padding:14px 0 0 0;
+/*  white-space:nowrap; */
+}
+
+.col-xs-2 {
+  margin:0;
+  padding:14px 0 0 0;
+/*  white-space:nowrap; */
+}
+
+.col-xs-3 {
+  margin:0;
+  padding:14px 0 0 0;
+/*  white-space:nowrap; */
+}
+
+.col-xs-4 {
+  margin:0;
+  padding:14px 0 0 0;
+/*  white-space:nowrap; */
+}
+
+.col-xs-6 {
+  margin:0;
+  padding:14px 0 0 0;
+/*  white-space:nowrap; */
+}
+
+.col-xs-8 {
+  margin:0;
+  padding:14px 0 0 0;
+/*  white-space:nowrap; */
+}
+
+.col-xs-12 {
+  margin:0;
+  padding:14px 0 0 0;
+/*  white-space:nowrap; */
+}
+
+.actions{
+  margin:14px 0 14px 0;
+  padding:0;
+}
+
+.linktop{
+  margin:20px 0 0 0;
+  padding:0;
+}
+
+.linktop a{
+  background-color:#c5cbdb;	
+  color:#00217f;
+  margin:0;
+  padding:4px 4px 4px 4px;
+}
+
+.link {
+  margin:0 0 10px 0;
+  padding:0;
+}
+
+.link a{
+  background-color:#c5cbdb;	
+  color:#00217f;
+  padding:4px 4px 4px 4px;
+}
+
+.evshow{
+  margin:20px 0 0 0;
+  padding:0;
+  font-weight:bold;
+}
+
+.evshowb{
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+.flabel{
+  margin:0;
+  padding:2px 0 0 0;
+}  
+
+.flabelsc{
+  margin:0;
+  padding:14px 0 0 0;
+  font-weight:bold;
+}  
+
+.slabelsc{
+  margin:0;
+  padding:10px 0 0 0;
+}  
+
+.ftime input[type="text"] {
+  width:40px;
+  text-align:center;
+}
+
+.ftimehighlight input[type="text"] {
+  width:40px;
+  text-align:center;
+  border:1px solid #bf3d5b;
+}
+
+.ftime input[type="text"]:hover{
+  background-color:#eefcd1;
+}
+
+.ftimehighlight input[type="text"]:hover{
+  background-color:#eefcd1;
+}
+
+.ftime h4{
+  font-weight:bold;
+}
+
+.fnum input[type="number"] {
+  width:60px;
+  text-align:center;
+}
+
+.fnumhighlight input[type="number"] {
+  width:60px;
+  border:1px solid #bf3d5b;
+  text-align:center;
+}
+
+.fnum input[type="number"]:hover{
+  background-color:#eefcd1;
+}
+
+.fnumhighlight input[type="number"]:hover{
+  background-color:#eefcd1;
+}
+
+.fyn input[type="text"] {
+  width:60px;
+  text-align:center;	
+}
+
+.ftext input[type="text"] {
+  width:120px;
+  text-align:left;
+  margin:0;
+  padding:0;
+}
+
+.ftext input[type="text"]:hover {
+  background-color:#eefcd1; 
+}
+
+.ftextsm input[type="text"] {
+  width:60px;
+}
+
+.ftextsm input[type="text"]:hover {
+  background-color:#eefcd1;
+}
+
+.femail input[type="email"]:hover {
+  background-color:#eefcd1;
+}
+
+.fpassword input[type="password"]:hover {
+  background-color:#eefcd1;
+}
+
+.foption input[type="option"]:hover {
+  background-color:#eefcd1;
+}
+
+.timeread{
+  font-size:16px;
+  color:#00217f;
+  font-weight:bold;
+  background-color:#eefcd1;
+  padding:5px 0 3px 0;
+  margin:0px 20px 0px 0px;
+  border:2px solid white;
+}
+
+@media screen and (max-width:750px){
+  #h1 {
+    font-size:24px;
+    font-weight:bold;
+    color:#00217f;
+  }
+  #h1sw {
+    font-size:16px;
+    font-weight:semi-bold;
+		margin:0;
+    padding:5px 0 0 0;
+  }
+  #h2 {
+    font-size:20px;
+    font-weight:bold;
+    color:#00217f;
+  }
+  #h2right {
+    font-size:20px;
+    font-weight:bold;
+    color:#00217f;
+    text-align:right;
+  }  
+  #h4 {
+    font-size:14px;
+	  font-weight:semi-bold;
+	  letter-spacing: -1px;
+	  margin:0;
+    padding:0;
+  }
+  #h4bold {
+    font-size:14px;
+		font-weight:bold;
+		letter-spacing:-1px;
+  }
+  #h4boldright {
+    font-size:14px;
+		font-weight:bold;
+		text-align:right;
+		letter-spacing: -1px;
+  }
+  #h4boldcenter {
+    font-size:14px;
+		font-weight:bold;
+		text-align:center;
+		letter-spacing: -1px;
+  }    
+  p {
+    font-size:10px;
+		letter-spacing: -1px;
+    white-space:nowrap;
+    margin:0;
+    padding:0;
+  }
+  li {
+    list-style:none;
+    font-size:9px;
+		letter-spacing: -1px;
+		white-space:nowrap;
+    margin:0;
+    padding:0;
+  }
+  .link {
+    font-size:10px;
+		letter-spacing: -1px;
+    white-space:nowrap;	
+    margin:0 0 10px 0;
+    padding:0;
+  }
+  .header{
+    height:120px;
+  }
+  .header img{
+    height:55px;
+    width:75px;
+  } 
+  .ftime input[type="text"] {
+    width:20px;
+    text-align:center;
+  }
+  .ftime h4{
+    font-weight:bold;
+  }
+  .fnum input[type="number"] {
+    width:30px;
+    text-align:center;
+		margin:0;
+		padding:0;
+  }
+  .fyn input[type="text"] {
+    width:40px;
+    text-align:center;
+		margin:0;
+		padding:0;	
+  }
+  .ftext input[type="text"] {
+    width:70px;
+    text-align:left;
+		margin:0;
+		padding:0;
+  }
+  .ftextsm input[type="text"] {
+    width:40px;
+		margin:0;
+		padding:0;
+  }
+  .timeread{
+    font-size:12px;
+    color:#00217f;
+    font-weight:bold;
+    background-color:#eefcd1;
+    padding:5px 0 3px 0;
+    margin:0px 20px 0px 0px;
+    border:2px solid white;
+  }   
+}

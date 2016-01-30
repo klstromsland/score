@@ -1,0 +1,14 @@
+<div class="subheader">
+  <div class="container">
+		<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Update Scorecard<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+	</div>
+</div>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  
+  <%= render "form" %>
+
+  <p class="linktop"><%= link_to "Show Scorecard", @scorecard %> | 
+			<%= link_to "Back to Event", event_path( @scorecard.event ) %></p>
+
+</div>

@@ -1,0 +1,183 @@
+<%= form_for(@tally) do |f| %>
+  <% if @tally.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tally.errors.count, "error") %> prohibited this tally from being saved:</h2>
+      <ul>
+      <% @tally.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<h2 id="h2"><%= @tally.event.title %> K9 Nose Work Trial Tally</h2>
+	<div class="row">
+		<div class="col-xs-3">
+			<h4 id="h4bold">Event Title: <%= @tally.event.title %></h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold">Location: <%= @tally.event.place %></h4> 
+		</div>
+		<div class="col-xs-3">
+			<h4 id="h4bold">Date: <%= @tally.event.date %></h4> 
+		</div>  
+		<div class="col-xs-3">
+			<h4 id="h4bold">Division: <%= @tally.event.division %></h4> 
+		</div>
+	</div>  
+	<% @tally.event.entrants.each do |entrant| %>
+		<% if @tally.entrant_tly_id == entrant.id %>
+			<div class="row">
+				<div class="col-xs-10">
+					<h4 id="h4bold">Team:  <%= entrant.first_name %> <%= entrant.last_name %> ( <%= entrant.idnumber %> ) and <%= entrant.dog_name %> ( <%= entrant.breed %>, <%= entrant.dogidnumber %> )</h4> 
+				</div>
+			</div>
+			<% point_tally = 0 %>
+			<% time_tally_m = 0 %>
+			<% time_tally_mstr = "" %>
+			<% time_tally_s = 0 %>
+			<% time_tally_sstr = "" %>	
+			<% time_tally_ms = 0 %>  
+			<% time_tally_msstr = "" %>	
+			<% fault_tally = 0 %>
+			<% q_score = 0 %>
+			<% q_scores = 0 %>	
+			<% titled = " " %>	
+			<div class="row">
+				<div class="col-xs-2">
+					<h4 id="h4bold">Element</h4>
+				</div>
+				<div class="col-xs-2" id="center">
+					<h4 id="h4bold">Points</h4>
+				</div>
+				<div class="col-xs-2" id="center">
+					<h4 id="h4bold">Time</h4>
+				</div>
+				<div class="col-xs-2" id="center">
+					<h4 id="h4bold">Faults</h4>
+				</div>
+			</div>
+			<% @tally.event.scorecards.each do |scorecard| %>
+				<% if scorecard.entrant_scd_id == entrant.id %>
+					<div class="row">
+						<div class="col-xs-2">
+							<p><%= scorecard.element %></p>
+						</div>
+						<div class="col-xs-2" id="center">
+							<p><%= scorecard.total_points %></p>
+						</div>
+						<div class="col-xs-2" id="center">
+							<p><%= scorecard.time_elapsed_m %>:<%= scorecard.time_elapsed_s %>:<%= scorecard.time_elapsed_ms %></p>
+						</div>
+						<div class="col-xs-2" id="center">
+							<p><%= scorecard.total_faults %></p>
+						</div>
+					</div>	
+					<% if scorecard.total_points != nil %>
+						<% point_tally += scorecard.total_points %>
+					<% end %>
+					<% if scorecard.time_elapsed_m != nil %>
+							<% time_tally_m += scorecard.time_elapsed_m.to_i %>
+					<% end %>
+					<% if scorecard.time_elapsed_s != nil %>	
+							<% time_tally_s += scorecard.time_elapsed_s.to_i %> 
+					<% end %>
+					<% if scorecard.time_elapsed_ms != nil %>
+							<% time_tally_ms += scorecard.time_elapsed_ms.to_i %> 
+					<% end %>
+					<% if scorecard.total_faults != nil %>
+							<% fault_tally += scorecard.total_faults %>
+					<% end %>
+					<% @tally.event.entrants do |entrant| %>
+						<% entrant.events.each do |event| %>
+							<% if entrant.id == event.entrant.id %>
+								<% event.tallies.each do |tally| %>
+									<% if tally.qualifying_score == 1 %>
+										<% q_scores += 1 %>
+									<% end %>
+								<% end %>
+							<% end %>	
+						<% end %>		
+					<% end %>
+					<% if (point_tally == 100)&&(fault_tally <= 3) %>
+						<% titled = "Titled" %>	
+					<% elsif @tally.event.division == "Element Specialty" %>
+						<% if (point_tally >= 75)&&(fault_tally <= 3) %>
+							<% q_score = 1 %>
+							<% q_scores += 1 %>
+							<% if q_scores = 2 %>
+								<% titled = "Titled" %>
+							<% end %>
+						<% end %>
+					<% elsif @tally.event.division == "Elite" %>
+						<% titled = "Per Judge" %>
+					<% else %>
+						<% titled = "Not this time" %>
+					<% end %>
+					<% time_tally_mstr = time_tally_m.to_s %>
+					<% time_tally_sstr = time_tally_s.to_s %>
+					<% time_tally_msstr = time_tally_ms.to_s %>
+					<% if time_tally_m < 10 %>	    
+						<% time_tally_mstr = "0" + time_tally_mstr %>
+					<% end %>	
+					<% if time_tally_s < 10 %>
+						<% time_tally_sstr = "0" + time_tally_sstr %>
+					<% end %>	
+					<% if time_tally_ms < 10 %>
+						<% time_tally_msstr = "0" + time_tally_msstr %>
+					<% end %>		  
+					<% @tally.total_time_m = time_tally_mstr %>
+					<% @tally.total_time_s = time_tally_sstr %>
+					<% @tally.total_time_ms = time_tally_msstr %>
+					<% @tally.total_points = point_tally %>  
+					<% @tally.total_faults = fault_tally %>
+					<% @tally.title = titled %>
+					<% @tally.qualifying_score = q_score %>
+					<% @tally.qualifying_scores = q_scores %>	  
+				<% end %>
+			<% end %>	
+		<% end %>	
+	<% end %> 
+	<div class="row">
+		<div class="col-xs-2">
+			<h4 id="h4bold">Titled?</h4>
+		</div>
+		<div class="col-xs-2" id="center">
+			<h4 id="h4bold">Total Points</h4>
+		</div>
+		<div class="col-xs-2" id="center">
+			<h4 id="h4bold">Total Time</h4>
+		</div>	  
+		<div class="col-xs-2" id="center">
+			<h4 id="h4bold">Total Faults</h4>
+		</div>
+		<div class="col-xs-2" id="center">
+			<h4 id="h4bold">Qualifying Score</h4>
+		</div>
+		<div class="col-xs-2" id="center">
+			<h4 id="h4bold">Qualifying Scores</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2">
+			<p><%= f.select :title, ["Not this time", "Titled"]  %></p>
+		</div>
+		<div class="col-xs-2" id="center">
+			<p class="fnum"><%= f.number_field :total_points, placeholder: 0 %></p>
+		</div>
+		<div class="col-xs-2" id="center">
+			<p class="ftime"><%= f.text_field :total_time_m, placeholder: "00" %>:<%= f.text_field :total_time_s, placeholder: "00" %>:<%= f.text_field :total_time_ms, placeholder: "00" %></p>
+		</div>
+		<div class="col-xs-2" id="center">
+			<p class="fnum"><%= f.number_field :total_faults, placeholder: 0 %></p>
+		</div>
+		<div class="col-xs-2" id="center">
+			<p class="fnum"><%= f.number_field :qualifying_score, placeholder: 0 %></p>
+		</div>
+		<div class="col-xs-2" id="center">
+			<p class="fnum"><%= f.number_field :qualifying_scores, placeholder: 0 %></p>
+		</div>
+	</div>	
+	<div class="actions">
+		<p><%= f.submit %></p>
+	</div>
+<% end %>

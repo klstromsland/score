@@ -1,0 +1,313 @@
+<script>
+  var timeout_m = <%= @scorecard.maxtime_m %>
+  var timeout_s = <%= @scorecard.maxtime_s %>
+  var timeout_ms = <%= @scorecard.maxtime_ms %>
+  var timeout = (timeout_m * 60000) + (timeout_s * 1000) + (timeout_ms * 10);
+</script>
+
+<h1 id="h1"><%= @scorecard.event.title %> K9 Nose Work Trial Scorecard</h1>
+<div id="bdr"></div>
+<div class="row">
+	<div class="col-xs-3">
+		<h4 id="h4bold">Event Title: <%= @scorecard.event.title %></h4> 
+	</div>
+	<div class="col-xs-3">
+		<h4 id="h4bold">Location: <%= @scorecard.event.place %></h4> 
+	</div>
+	<div class="col-xs-3">
+		<h4 id="h4bold">Date: <%= @scorecard.event.date %></h4> 
+	</div>  
+	<div class="col-xs-3">
+		<h4 id="h4bold">Division: <%= @scorecard.event.division %></h4> 
+	</div>
+</div>
+<% @scorecard.maxtime_ms = "00" %>
+<% if @scorecard.hides_max == nil %>
+  <% @scorecard.hides_max = 0 %>
+<% end %>
+
+<% if @scorecard.maxpoint == nil %>
+  <% @scorecard.maxpoint = 0 %>
+<% end %>
+
+<% if @scorecard.hides_found == nil %>
+  <% @scorecard.hides_found = 0 %>
+<% end %>
+
+<% if @scorecard.false_alert_fringe == nil %>
+  <% @scorecard.false_alert_fringe = 0 %>
+<% end %>
+
+<% if @scorecard.other_faults_count == nil %>
+  <% @scorecard.other_faults_count = 0 %>
+<% end %>
+
+<% if @scorecard.total_faults == nil %>
+  <% @scorecard.total_faults = 0 %>
+<% end %>
+
+<% if @scorecard.total_points == nil %>
+  <% @scorecard.total_points = 0 %>
+<% end %>
+<%= form_for(@scorecard) do |f| %>   
+  <% if @scorecard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scorecard.errors.count, "error") %> prohibited this scorecard from being saved:</h2>
+      <ul>
+				<% @scorecard.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+      </ul>
+    </div>
+  <% end %> 
+	<%= f.hidden_field :maxtime_ms %>
+	<div id="bdr"></div>
+	<% elmSearchAreas=0 %>
+	<% elmHides=0 %>
+	<% hideCountCheck=0 %>
+		<% case @scorecard.element %>
+			<% when "Container" %>
+				<% elmSearchAreas=@scorecard.event.cont_search_areas %>
+				<% elmHides=@scorecard.event.cont_hides %>
+			<% when "Interior" %>
+				<% elmSearchAreas=@scorecard.event.int_search_areas %>
+				<% elmHides=@scorecard.event.int_hides %>
+			<% when "Exterior" %>
+				<% elmSearchAreas=@scorecard.event.ext_search_areas %>
+				<% elmHides=@scorecard.event.ext_hides %>
+			<% when "Vehicle" %>
+				<% elmSearchAreas=@scorecard.event.veh_search_areas %>
+				<% elmHides=@scorecard.event.veh_hides %>
+			<% when "Elite" %>
+				<% elmSearchAreas=@scorecard.event.elite_search_areas %>
+				<% elmHides=@scorecard.event.elite_hides %>
+		<% end %>
+	<% hideCountCheck = elmHides %>
+	<div class="row">
+	  <div class="col-xs-12">
+			<h4 id="h4bold">Total <%= @scorecard.element %> Search Areas: <%= elmSearchAreas %></h4>
+			<h4 id="h4bold">Total <%= @scorecard.element %> Hides: <%= elmHides %></h4>
+		</div>
+	</div>
+	<div id="bdr"></div>
+	<div class="row">
+		<div class="col-xs-4">
+			<h4 class="flabelsc" id="h4bold">Element: <%= @scorecard.element %> <%= @scorecard.search_area %></h4> 
+		</div>
+		<div class="col-xs-4">
+			<h4 class="fnumhighlight" id="h4bold"><%= f.label :hides_max, "Search Area Potential Hides/Calls: "%> <%= f.number_field( :hides_max, in: 0...20, step: 1, placeholder: 0 ) %></h4>
+			<% if @scorecard.hides_max != nil %>	
+				<%if @scorecard.hides_max < 1 %>
+					<h4 id="h4bold"><span style="color:#bf3d5b">Incorrect Hide Count...</span></h4>
+				<% end %>
+				<% @scorecard.event.entrants.each do |entrant| %>
+					<% @scorecard.event.scorecards.each do |scorecard| %>
+						<% if @scorecard.entrant_scd_id == entrant.id %>
+							<% if scorecard.element == @scorecard.element %>
+								<% if scorecard.hides_max != nil %>
+									<% hideCountCheck -= scorecard.hides_max %>
+								<% end %>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
+				<% if hideCountCheck != 0 && @scorecard.hides_max > 1 %>
+					<h4 id="h4bold"><span style="color:#bf3d5b">Incorrect Hide Count...</span></h4>
+				<% end %>
+				<% if elmHides == 1 %>
+					<% @scorecard.hides_max = elmHides %>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="col-xs-4">
+			<div class="actions" id="marginedit">
+				<p><%= f.submit("Tabulate Points") %></p>
+			</div>
+		</div>		
+	</div>
+	<% if @scorecard.event.division != "NW1" %>
+		<% case @scorecard.element %>
+			<% when "Container" %>
+				<% @scorecard.maxpoint = (25.00/@scorecard.event.cont_hides) * @scorecard.hides_max %>
+			<% when "Interior" %>
+				<% @scorecard.maxpoint = (25.00/@scorecard.event.int_hides) * @scorecard.hides_max %>
+			<% when "Exterior" %>
+				<% @scorecard.maxpoint = (25.00/@scorecard.event.ext_hides) * @scorecard.hides_max %>
+			<% when "Vehicle" %>
+				<% @scorecard.maxpoint = (25.00/@scorecard.event.veh_hides) * @scorecard.hides_max %>
+			<% when "Elite" %>
+				<% @scorecard.maxpoint = (100.00/@scorecard.event.elite_hides) * @scorecard.hides_max %>
+		<% end %>
+	<% else %>
+		<% @scorecard.maxpoint = 25 %>
+	<% end %>
+	<div class="row">
+		<div class="col-xs-4">
+			<h4 class="fnumhighlight" id="h4"><%= f.label :maxpoint, "Point Value: " %>
+			<%= f.number_field :maxpoint %></h4>
+		</div>
+		<div class="col-xs-4">
+			<h4 class="ftimehighlight" id="h4"><span style="font-weight:bold">Time Limit: </span><class="field" id="cd_minutes"><%= f.text_field :maxtime_m, placeholder: "00" %></class>:<class="field" id="cd_seconds"><%= f.text_field :maxtime_s, placeholder: "00" %></class></h4> 
+		</div>
+		<div class="col-xs-4">
+			<div class="actions" id="marginedit">
+				<p><%= f.submit("Save Hides, Points, Time Limit") %></p>
+			</div>
+		</div>		
+	</div>
+	<div id="bdr"></div>
+	<% @scorecard.event.entrants.each do |entrant| %>
+		<% if @scorecard.entrant_scd_id == entrant.id %>
+			<div class="row">
+				<div class="col-xs-8">
+					<h4 id="h4bold">Handler Name: <strong><%= entrant.first_name %> <%= entrant.last_name %></strong></h4> 
+				</div>
+				<div class="col-xs-4">
+					<h4 id="h4bold">ID:  <strong><%= entrant.idnumber %></strong></h4> 
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<h4 id="h4bold">K9 Name:  <strong><%= entrant.dog_name %></strong></h4> 
+				</div>
+				<div class="col-xs-4">
+					<h4 id="h4bold">K9 Breed:  <strong><%= entrant.breed %></strong></h4> 
+				</div>
+				<div class="col-xs-4">
+					<h4 id="h4bold">K9 ID:  <strong><%= entrant.dogidnumber %></strong></h4> 
+				</div>
+			</div>  
+		<% end %>
+	<% end %>
+	<div class="row" id="stopwatch">
+		<div class="col-xs-4" id="nomargin">
+			<h1 id="h1sw"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Stopwatch<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+		</div>
+		<div class="col-xs-4" id="nomargin">
+			<div class="timeread">
+				<span id="sw_m">00</span>:
+				<span id="sw_s">00</span>:
+				<span id="sw_ms">00</span>
+			</div>
+		</div>
+		<div class="col-xs-4" id="nomargin">
+			<p><input type="button" value="Start" id="sw_start" />
+			<input type="button" value="Pause" id="sw_pause" />
+			<!--  <input type="button" value="Stop"  id="sw_stop" />  -->
+			<input type="button" value="Reset" id="sw_reset" />  <span id="sw_status">Idle</span><p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">  
+			<p class="fnumhighlight"><%= f.label :hides_found, "Hides Found: " %><%= f.number_field( :hides_found, in: 0...20, step: 1, placeholder: 0 ) %></p>
+		</div> 
+		<% @scorecard.hides_missed = @scorecard.hides_max - @scorecard.hides_found %>
+		<div class="col-xs-4"> 
+			<p class="fnum"><%= f.label :hides_missed, "Hides Missed: " %><%= f.number_field( :hides_missed, in: 0...20, step: 1, placeholder: 0 ) %></p>
+		</div>
+		<div class="col-xs-4">
+			<p class="fyn"><%= f.label :finish_call, "Finish call:  " %><%= f.select( :finish_call, ["yes", "no"], class: "form_input" ) %></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">    
+			<p class="fyn"><%= f.label :timed_out, "Timed out: " %><%= f.select( :timed_out, ["no", "yes"], :id => "timed_out_field" ) %></p>
+		</div>
+		<div class="col-xs-4">
+			<p class="fnum"><%= f.label :false_alert_fringe, "False alert/fringe: " %><%= f.number_field( :false_alert_fringe, in: 0...10, step: 1, placeholder: 0 ) %></p>
+		</div>
+		<div class="col-xs-4">
+			<p class="fyn"><%= f.label :eliminated_during_search, "Eliminated during search: " %><%= f.select( :eliminated_during_search, ["no", "yes"] ) %></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<p class="fyn"><%= f.label :dismissed, "DQ for event: " %><%= f.select( :dismissed, ["no", "yes"] ) %></p>
+		</div>
+		<div class="col-xs-4">
+			<p class="fyn"><%= f.label :excused, "Excused: " %><%= f.select( :excused, ["no", "yes"] ) %></p>
+		</div>
+		<div class="col-xs-4">
+			<p class="fyn"><%= f.label :absent, "Absent: " %><%= f.select( :absent, ["no", "yes"] ) %></p>
+		</div>
+	</div>  
+	<div class="field">
+		<p><%= f.label :other_faults_descr, "Other faults (describe): " %></p>
+		<%= f.text_area :other_faults_descr, size: "80X60" %>
+	</div>
+	<div class="field">
+		<p class="fnum"><%= f.label :other_faults_count, "Other faults count: " %><%= f.number_field( :other_faults_count, in: 0...10, step: 1, placeholder: 0 ) %></p>
+	</div>		
+	<% @scorecard.total_faults = @scorecard.other_faults_count %>		
+	<div class="field">
+		<p><%= f.label :comments, "Comments: " %></p>
+		<%= f.text_area :comments, size: "80X60" %>
+	</div>
+	<div id="bdr"></div> 
+	<% if (@scorecard.false_alert_fringe > 0) %>
+		<% if @scorecard.event.division != "Elite" %>
+		 <% @scorecard.total_faults += 2 %>
+		<% end %>
+	<% end %>
+	<% if (@scorecard.eliminated_during_search == "yes") || (@scorecard.excused == "yes") %>
+		<% if @scorecard.event.division != "Elite" %>
+			<% @scorecard.total_faults += 3 %>
+		<% else %>
+			<% @scorecard.total_faults += 1 %>
+		<% end %>	   
+	<% end %>				
+	<% if (@scorecard.absent == "yes")&&(event.division != "Elite") %>
+		<% @scorecard.total_faults += 4 %>
+	<% end %>
+	<% if @scorecard.event.division != "Elite" %>
+		<% if (@scorecard.finish_call == "no")||(@scorecard.absent == "yes")||(@scorecard.eliminated_during_search == "yes")||(@scorecard.excused == "yes")||(@scorecard.false_alert_fringe != 0) %>
+			<% @scorecard.time_elapsed_m = @scorecard.maxtime_m %>
+			<% @scorecard.time_elapsed_s = @scorecard.maxtime_s %>
+			<% @scorecard.time_elapsed_ms = @scorecard.maxtime_ms %>
+		<% end %>
+	<% end %>	
+	<div class="row">
+		<div class="col-xs-4">
+			<p class="fnum"><%= f.label :total_faults, "Search Area Total Faults: " %><%= f.number_field( :total_faults, in: 0...10, step: 1, placeholder: 0 ) %></p>
+		</div>
+		<div class="col-xs-4">
+			<p class="ftime"><%= f.text_field :time_elapsed_m, :id => "elapsed_time_m_field", placeholder: "00" %>:<%= f.text_field :time_elapsed_s, :id => "elapsed_time_s_field", placeholder: "00" %>:<%= f.text_field :time_elapsed_ms, :id => "elapsed_time_ms_field", placeholder: "00" %> min:sec:sec/100</p>
+		</div>			
+		<% if @scorecard.total_faults <= 3 %>
+			<% if @scorecard.hides_found == @scorecard.hides_max %> 
+				<% @scorecard.total_points = @scorecard.maxpoint %>
+			<% elsif (@scorecard.event.division == "NW2")||(@scorecard.event.division == "NW3") || (@scorecard.event.division == "Element Specialty") %>
+				<% @scorecard.total_points = @scorecard.hides_found * @scorecard.maxpoint/@scorecard.hides_max %>
+			<% elsif @scorecard.event.division == "Elite" %>
+				<% @scorecard.total_points = (@scorecard.hides_found * @scorecard.maxpoint/@scorecard.hides_max) - @scorecard.total_faults %>
+				<% if @scorecard.finish_call = "no" %>
+					<% @scorecard.total_points -= (@scorecard.maxpoint/@scorecard.hides_max)/2 %>
+				<% end %>
+				<% if @scorecard.false_alert_fringe < 3 %>
+					<% @scorecard.total_points -= @scorecard.false_alert_fringe * (@scorecard.maxpoint/@scorecard.hides_max)/2 %>
+				<% end %>
+			<% else %>
+				<% @scorecard.total_points = 0 %>
+			<% end %>
+		<% end %>	
+		<% if (@scorecard.absent == "yes")||(@scorecard.eliminated_during_search == "yes")||(@scorecard.excused == "yes") %>
+			<% @scorecard.total_points = 0 %>
+		<% end %>  
+		<div class="col-xs-4">
+			<p class="fnum"><%= f.label :total_points, "Total points: " %><%= f.number_field :total_points, placeholder: 0 %></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<p class="fyn"><%= f.label :pronounced, "Pronounced: " %><%= f.select( :pronounced, ["no", "yes"] ) %></p>
+		</div>		
+		<div class="col-xs-4">
+			<p class="fyn"><%= f.label :judge_signature, "Judge Signature: " %><%= f.select( :judge_signature, ["no", "yes"] ) %></p>
+		</div>
+		<div class="actions" id="nomargin">
+			<div class="col-xs-4">
+				<p id="wrap"><%= f.submit("Tabulate Score") %> <%= f.submit("Final Submit") %></p>
+			</div>
+		</div>
+	</div>
+<% end %>

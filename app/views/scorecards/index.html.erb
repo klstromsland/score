@@ -1,0 +1,77 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>Scorecards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Element</th>	  
+      <th>Search Area</th>	  
+      <th>Maxpoint</th>
+      <th>Max time m</th>
+	  <th>Max time s</th>
+	  <th>Max time ms</th>
+	  <th>Time elapsed m</th>
+	  <th>Time elapsed s</th>
+	  <th>Time elapsed ms</th>
+      <th>Timed out</th>	  
+      <th>Hides found</th>
+      <th>Hides missed</th>
+      <th>Finish call</th>
+      <th>False alert fringe</th>
+      <th>Eliminated during search</th>
+      <th>Dismissed</th>
+      <th>Excused</th>
+      <th>Other faults descr</th>
+      <th>Other faults count</th>
+      <th>Comments</th>
+      <th>Judge signature</th>
+      <th>Pronounced</th>
+      <th>Total faults</th>
+      <th>Total points</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scorecards.each do |scorecard| %>
+      <tr>
+        <td><%= scorecard.name %></td>	
+        <td><%= scorecard.element %></td>
+        <td><%= scorecard.search_area %></td>		
+        <td><%= scorecard.maxpoint %></td>
+        <td><%= scorecard.maxtime_m %></td>
+		<td><%= scorecard.maxtime_s %></td>
+		<td><%= scorecard.maxtime_ms %></td>
+		<td><%= scorecard.time_elapsed_m %></td>
+		<td><%= scorecard.time_elapsed_s %></td>
+		<td><%= scorecard.time_elapsed_ms %></td>
+        <td><%= scorecard.timed_out %></td>		
+        <td><%= scorecard.hides_found %></td>
+        <td><%= scorecard.hides_missed %></td>
+        <td><%= scorecard.finish_call %></td>
+        <td><%= scorecard.false_alert_fringe %></td>
+        <td><%= scorecard.eliminated_during_search %></td>
+        <td><%= scorecard.dismissed %></td>
+        <td><%= scorecard.excused %></td>
+        <td><%= scorecard.other_faults_descr %></td>
+        <td><%= scorecard.other_faults_count %></td>
+        <td><%= scorecard.comments %></td>
+        <td><%= scorecard.judge_signature %></td>
+        <td><%= scorecard.pronounced %></td>
+        <td><%= scorecard.total_faults %></td>
+        <td><%= scorecard.total_points %></td>
+        <td><%= link_to 'Show', scorecard %></td>
+        <td><%= link_to 'Edit', edit_scorecard_path(scorecard) %></td>
+        <td><%= link_to 'Destroy', scorecard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scorecard', new_scorecard_path %>
+</div>

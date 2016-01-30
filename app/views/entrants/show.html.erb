@@ -1,0 +1,44 @@
+<div class="container">
+	<p id="notice"><%= notice %></p>
+	<div class="row">
+		<div class="col-xs-2">
+			<h4 id="h4bold">First Name</h4>
+		</div>
+		<div class="col-xs-2">
+			<h4 id="h4bold">Last Name</h4>
+		</div>
+		<div class="col-xs-1">
+			<h4 id="h4boldcenter">ID#</h4>
+		</div>
+		<div class="col-xs-2">
+			<h4 id="h4bold">K9 Name</h4>
+		</div>
+		<div class="col-xs-1">
+			<h4 id="h4boldcenter">K9ID#</h4>
+		</div>
+		<div class="col-xs-2">
+			<h4 id="h4bold">Breed</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2">
+			<p><%= @entrant.first_name %></p>
+		</div>
+		<div class="col-xs-2">
+			<p><%= @entrant.last_name %></p>
+		</div>
+		<div class="col-xs-1">
+			<p id="center"><%= @entrant.idnumber %></p>
+		</div>
+		<div class="col-xs-2">
+			<p><%= @entrant.dog_name %></p>
+		</div>
+		<div class="col-xs-1">
+			<p id="center"><%= @entrant.dogidnumber %></p>
+		</div>
+		<div class="col-xs-2">
+			<p><%= @entrant.breed %></p>
+		</div>
+	</div>
+	<p class="linktop"><%= link_to "Back to Events", events_path %> | <%= link_to "Edit Team Info", edit_entrant_path(@entrant) %> | <%= link_to "Back to Teams", entrants_path %></p>
+</div>

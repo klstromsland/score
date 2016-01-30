@@ -1,0 +1,61 @@
+<div class="subheader">
+	<div class = "container">
+		<p id="notice"><%= notice %></p>
+		<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Events<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+	</div>
+</div>
+<div class="container">
+  <div id="bdr"></div>
+  <div class="row">
+    <div class="col-xs-2">
+      <h4 id="h4bold">Title</h4>
+		</div>
+    <div class="col-xs-2">
+      <h4 id="h4bold">Location</h4>
+		</div>
+		<div class="col-xs-1" id="center">
+      <h4 id="h4bold">Date</h4>
+		</div>
+    <div class="col-xs-2" id="center">
+      <h4 id="h4bold">Division</h4>
+		</div>
+    <div class="col-xs-2">
+      <h4 id="h4bold">Host</h4>
+		</div>
+    <div class="col-xs-1" id="center">
+      <h4 id="h4bold">Status</h4>
+		</div>
+  </div>
+  <div id="bdr"></div>
+  <% @events.each do |event| %>
+		<div class="row">
+			<div class = "col-xs-2">
+				<p><%= event.title %></p>
+			</div>
+			<div class="col-xs-2">
+				<p><%= event.place %></p>
+			</div>
+			<div class="col-xs-1" id="center">
+				<p><%= event.date %></p>
+			</div>
+			<div class="col-xs-2" id="center">
+				<p><%= event.division %></p>
+			</div>
+			<div class="col-xs-2">
+				<p><%= event.host %></p>
+			</div>			
+			<div class="col-xs-1" id="center">
+				<% if event.status == "active" %>
+					<p><strong><span style="color:#72a54d"><%= event.status %></span></strong></p>
+				<% else %>
+					<p><strong><span style="color:#bf3d5b"><%= event.status %></span></strong></p>
+				<% end %>
+			</div>
+			<div class="col-xs-2">
+				<p class="link"><%= link_to "Show", event %>|<%= link_to_unless( event.status == "closed" , "Edit", edit_event_path(event)) %>|<%= link_to "Delete", event, method: :delete, data: { confirm: "Are you sure?" } %></p>
+			</div>	
+		</div>
+  <% end %>
+  <p class = "linktop"><%= link_to "New Event", new_event_path %></p>
+  <p class = "linktop"><%= link_to "New User", new_user_path %> | <%= link_to "List Users", users_path %> | <%= link_to "New Team", new_entrant_path %> | <%= link_to "List Teams", entrants_path %></p>
+</div>

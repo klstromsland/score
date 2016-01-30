@@ -1,0 +1,136 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <ul>
+				<% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+				<% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+	  <div class="col-xs-1">
+			<h4 id="h4"><%= f.label :title, "Title: " %></h4>
+	  </div>
+	  <div class="col-xs-2">
+			<p class="ftext"><%= f.text_field :title %></p>	
+	  </div>
+	  <div class="col-xs-2">
+			<h4 id="h4"><%= f.label :place, "Location: " %></h4>
+	  </div>
+	  <div class="col-xs-2">
+			<p class="ftext"><%= f.text_field :place %></p>
+	  </div>
+	  <div class="col-xs-1">
+			<h4 id="h4"><%= f.label :date, "Date: " %></h4>
+	  </div>
+	  <div class="col-xs-4">
+			<p id="right"><%= f.date_select :date %></p>
+	  </div>
+  </div>
+  <div class="row">
+	  <div class="col-xs-1">
+			<h4 id="h4"><%= f.label :status, "Status: " %></h4>
+	  </div>	
+	  <div class="col-xs-2">
+			<p id="right"><%= f.select :status, ["active", "closed"], class: "form_input" %></p>
+	  </div>
+    <div class="col-xs-2">
+	    <h4 id="h4"><%= f.label :host, "Host: " %></h4>
+	  </div>
+	  <div class="col-xs-2">
+	    <p class="ftext"><%= f.text_field :host %></p>
+	  </div>
+    <div class="col-xs-1">
+	    <h4 id="h4"><%= f.label :division, "Division: " %></h4>
+	  </div>
+	  <div class="col-xs-4">
+	    <p id="right"><%= f.select :division, ["NW1", "NW2", "NW3", "Element Specialty", "Elite"] %></p>
+	  </div>	  
+  </div>
+	<div id="bdr"></div>
+	<h4 id="h4bold">Element Search Areas and Hides</h4>
+  <div class="row">
+	  <div class = "col-xs-2">
+		  <p id="bold">Element</p>
+	  </div>	
+	  <div class = "col-xs-2">
+	    <p id="bold"><%= f.label :int_search_areas, "Interior" %></p>
+	  </div>
+		<div class = "col-xs-2">
+	    <p id="bold"><%= f.label :ext_search_areas, "Exterior" %></p>
+	  </div>
+	  <div class = "col-xs-2">
+	    <p id="bold"><%= f.label :cont_search_areas, "Container" %></p>
+	  </div>		
+	  <div class = "col-xs-2">
+	    <p id="bold"><%= f.label :veh_search_areas, "Vehicle" %></p>
+	  </div>		
+	  <div class = "col-xs-2">
+	    <p id="bold"><%= f.label :elite_search_areas, "Elite" %></p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class = "col-xs-2">
+		  <p id="bold">Search Areas</p>
+	  </div>	
+	  <div class = "col-xs-2">
+	    <p class="fnum"><%= f.number_field :int_search_areas,  in: 0...10, step: 1, placeholder: 0 %></p>
+	  </div>
+	  <div class = "col-xs-2">
+	    <p class="fnum"><%= f.number_field :ext_search_areas,  in: 0...10, step: 1, placeholder: 0  %></p>
+    </div>
+	  <div class = "col-xs-2">
+	    <p class="fnum"><%= f.number_field :cont_search_areas,  in: 0...10, step: 1, placeholder: 0  %></p>
+	  </div>
+	  <div class = "col-xs-2">
+	    <p class="fnum"><%= f.number_field :veh_search_areas,  in: 0...10, step: 1, placeholder: 0 %></p>
+	  </div>
+	  <div class = "col-xs-2">
+	    <p class="fnum"><%= f.number_field :elite_search_areas,  in: 0...10, step: 1, placeholder: 0 %></p>
+	  </div>
+  </div>
+  <div class="row">    
+	  <div class = "col-xs-2">
+		  <p id="bold">Hides</p>
+	  </div>
+	  <div class = "col-xs-2">	
+	    <p class="fnum"><%= f.number_field :int_hides,  in: 0...10, step: 1, placeholder: 0 %></p>
+	  </div>
+	  <div class = "col-xs-2">
+	    <p class="fnum"><%= f.number_field :ext_hides,  in: 0...10, step: 1, placeholder: 0  %></p>
+      </div>
+	  <div class = "col-xs-2">
+	    <p class="fnum"><%= f.number_field :cont_hides,  in: 0...10, step: 1, placeholder: 0  %></p>
+	  </div>
+	  <div class = "col-xs-2">
+	    <p class="fnum"><%= f.number_field :veh_hides,  in: 0...10, step: 1, placeholder: 0 %></p>
+	  </div>
+	  <div class = "col-xs-2">
+	    <p class="fnum"><%= f.number_field :elite_hides,  in: 0...10, step: 1, placeholder: 0 %></p>
+	  </div>
+  </div>  
+	<div id="bdr"></div>
+	<div class="row">
+	  <div class = "col-xs-4">
+	    <h4 id="h4"><%= f.label "Officials: " %></h4>
+		</div>
+	  <div class = "col-xs-4">
+	    <h4 id="h4"><%= f.label "Teams: " %></h4>
+	  </div>
+  </div>		
+  <div class="row">
+	  <div class = "col-xs-4">
+	    <p><%= select_tag "user_team", options_from_collection_for_select(User.all.where("status = 'active'"), "id", "last_name", @event.users.map{ |u| u.id }), :multiple => true, :include_blank => true %></p>
+    </div>
+	  <div class = "col-xs-4">
+	    <p><%= select_tag "team", options_from_collection_for_select(Entrant.all, "id", "last_name", @event.entrants.map{ |en| en.id }), :multiple => true, :include_blank => true %></p>
+    </div>
+	  <div class = "col-xs-4">
+	    <div class="actions">
+        <p><%= f.submit %></p>
+      </div>
+    </div> 	  
+  </div>
+<% end %>

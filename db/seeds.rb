@@ -1,0 +1,31 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
+es_user = User.create(:first_name => "Ethan", :last_name =>	"Smith", :role => "Judge", :status => "active", :email => "ethan.smith@email.com", :password => "Smith12", :password_confirmation => "Smith12")
+oj_user = User.create(:first_name => "Olivia", :last_name => "Johnson", :role => "Certifying Official", :status => "active", :email => "olivia.johnson@email.com", :password => "Johnson12", :password_confirmation => "Johnson12")
+ew_user = User.create(:first_name => "Emma", :last_name => "Williams", :role => "Representative", :status => "active", :email => "emma.williams@email.com", :password => "Williams12",  :password_confirmation => "Williams12")
+ab_user = User.create(:first_name => "Alexander", :last_name =>	"Brown", :role => "Representative", :status => "active", :email => "alexander.brown@email.com", :password => "Brown12",  :password_confirmation => "Brown12")
+jj_user = User.create(:first_name => "Jacob", :last_name =>	"Jones", :role => "Certifying Official", :status => "active", :email => "jacob.jones@email.com", :password => "Jones12",  :password_confirmation => "Jones12")
+am_user = User.create(:first_name => "Ava", :last_name => "Miller", :role => "Judge", :status => "active", :email => "ava.miller@email.com", :password => "Miller12",  :password_confirmation => "Miller12")	
+sm_entrant = Entrant.create(:first_name => "Sophia", :last_name => "Miller", :idnumber => "M001234", :dog_name => "Bella", :dogidnumber => "K001234", :breed => "Affenpinscher")
+ed_entrant = Entrant.create(:first_name => "Emily", :last_name => "Davis", :idnumber => "M002345", :dog_name => "Bailey", :dogidnumber => "K002345", :breed => "Mix")
+eg_entrant = Entrant.create(:first_name => "Ethan", :last_name => "Garcia", :idnumber => "M003456", :dog_name => "Max", :dogidnumber => "K003456", :breed => "Afghan Hound")
+wr_entrant = Entrant.create(:first_name => "William", :last_name => "Rodriguez", :idnumber => "M004567", :dog_name => "Lucy", :dogidnumber => "K004567", :breed => "Afghan Sheperd")
+dw_entrant = Entrant.create(:first_name => "Daniel", :last_name => "Wilson", :idnumber => "M005678", :dog_name => "Charlie", :dogidnumber => "K005678", :breed => "Airedale Terrier")
+im_entrant = Entrant.create(:first_name => "Isabella", :last_name => "Martinez", :idnumber => "M006789", :dog_name => "Molly", :dogidnumber => "K006789", :breed => "Akita Inu")
+aa_entrant = Entrant.create(:first_name => "Abigail", :last_name => "Anderson", :idnumber => "M007890", :dog_name => "Buddy", :dogidnumber => "K007890", :breed => "Alaskan Malamute")
+mt_entrant = Entrant.create(:first_name => "Madison", :last_name => "Taylor", :idnumber => "M008901", :dog_name => "Daisy", :dogidnumber => "K008901", :breed => "Cocker Spaniel")
+ct_entrant = Entrant.create(:first_name => "Chloe", :last_name => "Thomas", :idnumber => "M009012", :dog_name => "Rocky", :dogidnumber => "K009012", :breed => "Australian Cattle Dog")
+eh_entrant = Entrant.create(:first_name => "Elizabeth", :last_name => "Hernandez", :idnumber => "M000123", :dog_name => "Maggie", :dogidnumber => "K000123", :breed => "Border Collie")
+lm_entrant = Entrant.create(:first_name => "Logan", :last_name => "Moore", :idnumber => "M000234", :dog_name => "Jake", :dogidnumber => "K000234", :breed => "Australian Shepherd")
+lma_entrant = Entrant.create(:first_name => "Landon", :last_name => "Martin", :idnumber => "M000345", :dog_name => "Sophie", :dogidnumber => "K000345", :breed => "Basenji")
+bj_entrant = Entrant.create(:first_name => "Benjamin", :last_name => "Jackson", :idnumber => "M000456", :dog_name => "Jack", :dogidnumber => "K000456", :breed => "Basset Hound")
+at_entrant = Entrant.create(:first_name => "Aiden", :last_name => "Thompson", :idnumber => "M000567", :dog_name => "Sadie", :dogidnumber => "K000567", :breed => "Beagle")
+sw_entrant = Entrant.create(:first_name => "Samuel", :last_name => "White", :idnumber => "M000678", :dog_name => "Tobie", :dogidnumber => "K000678", :breed => "Beauceron")
+dl_entrant = Entrant.create(:first_name => "David", :last_name => "Lopez", :idnumber => "M000789", :dog_name => "Chloe", :dogidnumber => "K000789", :breed => "Belgian Shepherd Dog")
+al_entrant = Entrant.create(:first_name => "Anna", :last_name => "Lee", :idnumber => "M000890", :dog_name => "Cody", :dogidnumber => "K000890", :breed => "Bernese Mountain Dog")
+ag_entrant = Entrant.create(:first_name => "Alexis", :last_name => "Gonzalez", :idnumber => "M000901", :dog_name => "Buster", :dogidnumber => "K000901", :breed => "Blue Heeler")
