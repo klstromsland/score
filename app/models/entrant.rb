@@ -6,4 +6,7 @@ class Entrant < ActiveRecord::Base
 	validates :dog_name, presence: true
 	validates :dogidnumber, presence: true
 	validates :breed, presence: true
+  def team
+    "#{last_name}, #{first_name} and #{dog_name}"
+  end  
 end

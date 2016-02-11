@@ -1,12 +1,25 @@
-<div class="subheader">
-  <div class="container">
-		<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Update User Info<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+<div class="container-fluid">
+	<div class="subheader">
+		<div class="nav">
+			<div class="row">
+				<div class="col-xs-4">		
+					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Update User Info<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+				</div>
+				<div class="col-xs-4" id="center">
+					<p id="notice"><%= notice %></p>
+				</div>
+				<div class="col-xs-4" id="right">				
+					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
+				</div>				
+			</div>					
+		</div>
 	</div>
-</div>
-<div class="container">
-  <p id="notice"><%= notice %></p>
+<div class="partial">
 
 	<%= render "form" %>
-
-	<p class="linktop"><%= link_to "Back to Events", events_path %> | <%= link_to "Back to Users", users_path %> | <%= link_to "Show", @user %></p>
+	
+	</div>
 </div>
+<div class="footer">
+	<div class="nav">
+	<p class="linktopgreen"><%= link_to "Back to Events", events_path %> | <%= link_to "Back to Users", users_path %> | <%= link_to "Show", @user %></p>

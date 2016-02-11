@@ -71,46 +71,63 @@
 	    <p id="bold"><%= f.label :elite_search_areas, "Elite" %></p>
 	  </div>
 	</div>
+	<% if @event.entrants != nil && @event.users != nil && @event.id != nil %>		
+		<% @entrants = @event.entrants %>
+		<% @users = @event.users %>
+		<% @event.update_event(@event.id, @entrants, @users) %>
+	<% end %>
 	<div class="row">
 	  <div class = "col-xs-2">
 		  <p id="bold">Search Areas</p>
 	  </div>	
 	  <div class = "col-xs-2">
-	    <p class="fnum"><%= f.number_field :int_search_areas,  in: 0...10, step: 1, placeholder: 0 %></p>
+	    <p class="fnum"><%= f.number_field :int_search_areas,  in: 0...10, step: 1 %></p>
 	  </div>
 	  <div class = "col-xs-2">
-	    <p class="fnum"><%= f.number_field :ext_search_areas,  in: 0...10, step: 1, placeholder: 0  %></p>
+	    <p class="fnum"><%= f.number_field :ext_search_areas,  in: 0...10, step: 1 %></p>
     </div>
 	  <div class = "col-xs-2">
-	    <p class="fnum"><%= f.number_field :cont_search_areas,  in: 0...10, step: 1, placeholder: 0  %></p>
+	    <p class="fnum"><%= f.number_field :cont_search_areas,  in: 0...10, step: 1 %></p>
 	  </div>
 	  <div class = "col-xs-2">
-	    <p class="fnum"><%= f.number_field :veh_search_areas,  in: 0...10, step: 1, placeholder: 0 %></p>
+	    <p class="fnum"><%= f.number_field :veh_search_areas,  in: 0...10, step: 1 %></p>
 	  </div>
 	  <div class = "col-xs-2">
-	    <p class="fnum"><%= f.number_field :elite_search_areas,  in: 0...10, step: 1, placeholder: 0 %></p>
+	    <p class="fnum"><%= f.number_field :elite_search_areas,  in: 0...10, step: 1 %></p>
 	  </div>
-  </div>
-  <div class="row">    
+  </div>	
+  <div class="row">
 	  <div class = "col-xs-2">
 		  <p id="bold">Hides</p>
 	  </div>
 	  <div class = "col-xs-2">	
-	    <p class="fnum"><%= f.number_field :int_hides,  in: 0...10, step: 1, placeholder: 0 %></p>
+	    <p class="fnum"><%= f.number_field :int_hides,  in: 0...10, step: 1 %></p>
 	  </div>
 	  <div class = "col-xs-2">
-	    <p class="fnum"><%= f.number_field :ext_hides,  in: 0...10, step: 1, placeholder: 0  %></p>
+	    <p class="fnum"><%= f.number_field :ext_hides,  in: 0...10, step: 1 %></p>
       </div>
 	  <div class = "col-xs-2">
-	    <p class="fnum"><%= f.number_field :cont_hides,  in: 0...10, step: 1, placeholder: 0  %></p>
+	    <p class="fnum"><%= f.number_field :cont_hides,  in: 0...10, step: 1 %></p>
 	  </div>
 	  <div class = "col-xs-2">
-	    <p class="fnum"><%= f.number_field :veh_hides,  in: 0...10, step: 1, placeholder: 0 %></p>
+	    <p class="fnum"><%= f.number_field :veh_hides,  in: 0...10, step: 1 %></p>
 	  </div>
 	  <div class = "col-xs-2">
-	    <p class="fnum"><%= f.number_field :elite_hides,  in: 0...10, step: 1, placeholder: 0 %></p>
+	    <p class="fnum"><%= f.number_field :elite_hides,  in: 0...10, step: 1 %></p>
 	  </div>
-  </div>  
+  </div>
+	<div class="row">
+	  <div class = "col-xs-8">
+	    <div class="actions">
+        <p></p>
+      </div>
+    </div>		
+	  <div class = "col-xs-2">
+	    <div class="actions">
+        <p><%= f.submit "Update Search Area Info" %></p>
+      </div>
+    </div>
+	</div>	
 	<div id="bdr"></div>
 	<div class="row">
 	  <div class = "col-xs-4">
@@ -119,18 +136,18 @@
 	  <div class = "col-xs-4">
 	    <h4 id="h4"><%= f.label "Teams: " %></h4>
 	  </div>
-  </div>		
-  <div class="row">
+  </div>
+	<div class="row">
 	  <div class = "col-xs-4">
-	    <p><%= select_tag "user_team", options_from_collection_for_select(User.all.where("status = 'active'"), "id", "last_name", @event.users.map{ |u| u.id }), :multiple => true, :include_blank => true %></p>
+	    <p><%= select_tag "user_team", options_from_collection_for_select(User.all.where("status = 'active'").order("role").order("last_name"), "id", "name_role", @event.users.map{ |u| u.id }), :multiple => true, :include_blank => true, size: 20  %></p>
     </div>
 	  <div class = "col-xs-4">
-	    <p><%= select_tag "team", options_from_collection_for_select(Entrant.all, "id", "last_name", @event.entrants.map{ |en| en.id }), :multiple => true, :include_blank => true %></p>
+	    <p><%= select_tag "team", options_from_collection_for_select(Entrant.all.order("last_name"), "id", "team", @event.entrants.map{ |en| en.id }), :multiple => true, :include_blank => true, size: 20 %></p>
     </div>
 	  <div class = "col-xs-4">
 	    <div class="actions">
         <p><%= f.submit %></p>
       </div>
-    </div> 	  
+    </div>
   </div>
 <% end %>

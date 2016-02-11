@@ -11,7 +11,6 @@ class ScorecardsController < ApplicationController
   # GET /scorecards/1
   # GET /scorecards/1.json
   def show
-		@scorecard = Scorecard.find(params[:id])
   end
 
   # GET /scorecards/new
@@ -21,7 +20,6 @@ class ScorecardsController < ApplicationController
 
   # GET /scorecards/1/edit
   def edit
-		@scorecard = Scorecard.find(params[:id])
   end
 
   # POST /scorecards
@@ -43,11 +41,10 @@ class ScorecardsController < ApplicationController
   # PATCH/PUT /scorecards/1
   # PATCH/PUT /scorecards/1.json
   def update
-    @scorecard = Scorecard.find(params[:id])
     respond_to do |format|
       if @scorecard.update(scorecard_params)
-        format.html { render :edit, notice: 'Scorecard was successfully updated.' }
-		format.js   {}
+        format.html { redirect_to :back, notice: 'Scorecard was successfully updated.' }
+        format.js   {}
         format.json { render :show, status: :ok, location: @scorecard }
       else
         format.html { render :edit }
@@ -67,13 +64,13 @@ class ScorecardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Use callbacks to share common setup or constraints between actions.    
     def set_scorecard
       @scorecard = Scorecard.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scorecard_params
-      params.require(:scorecard).permit(:name, :element, :search_area, :hides_max, :maxpoint, :maxtime_m, :maxtime_s, :maxtime_ms, :hides_found, :hides_missed, :finish_call, :false_alert_fringe, :timed_out, :time_elapsed_m, :time_elapsed_s, :time_elapsed_ms,  :eliminated_during_search, :dismissed, :excused, :absent, :other_faults_descr, :other_faults_count, :comments, :judge_signature, :pronounced, :total_faults, :total_points,  :event_ids => [], :entrant_ids => [] )
+      params.require(:scorecard).permit(:name, :element, :search_area, :hides_max, :maxpoint, :maxtime_m, :maxtime_s, :maxtime_ms, :hides_found, :hides_missed, :finish_call, :false_alert_fringe, :timed_out, :time_elapsed_m, :time_elapsed_s, :time_elapsed_ms,  :eliminated_during_search, :dismissed, :excused, :absent, :other_faults_descr, :other_faults_count, :comments, :judge_signature, :pronounced, :total_faults, :total_points, :event_ids => [], :entrant_ids => [] )
     end
 end

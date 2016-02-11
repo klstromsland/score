@@ -7,9 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class = "header">
-  <div class = "container">
-		<div class="nav">
+<div class="container-fluid">
+	<div class="header">
+		<div class="nav" id="right">
 			<% if current_user %>
 				<ul>
 					<li><%= current_user.email %> | <%= link_to "Log out", logout_path, method: "delete" %></li>
@@ -20,35 +20,34 @@
 				</ul>
 			<% end %>
 		</div>
-	</div>
-  <div class = "container">	
-		<div class = "col-xs-2" id="sniffing">
-			<%= image_tag("P1060231.JPG", class: "img") %>
+		<div class = "nav">	
+			<div class = "col-xs-2" id="sniffingleft">
+				<%= image_tag("P1060231.JPG", class: "img") %>
+			</div>
+			<div class = "col-xs-2" id="sniffing">
+				<%= image_tag("two-dogs-sniffing.jpg", class: "img") %>
+			</div>
+			<div class = "col-xs-2" id="sniffing">
+				<%= image_tag("dog-142328_1920.jpg", class: "img") %>
+			</div>
+			<div class = "col-xs-2" id="sniffing">
+				<%= image_tag("7175995318_b30fb66085_m.jpg", class: "img") %>
+			</div>	
+			<div class = "col-xs-2" id="sniffing">
+				<%= image_tag("dog_sniffing_water.jpg", class: "img") %>
+			</div>
+			<div class = "col-xs-2" id="sniffingright">
+				<%= image_tag("dog_sniffing_185404-980x560.jpg", class: "img") %>
+			</div>
 		</div>
-		<div class = "col-xs-2" id="sniffing">
-			<%= image_tag("two-dogs-sniffing.jpg", class: "img") %>
-		</div>
-		<div class = "col-xs-2" id="sniffing">
-			<%= image_tag("dog-142328_1920.jpg", class: "img") %>
-		</div>
-		<div class = "col-xs-2" id="sniffing">
-			<%= image_tag("7175995318_b30fb66085_m.jpg", class: "img") %>
-		</div>	
-		<div class = "col-xs-2" id="sniffing">
-			<%= image_tag("dog_sniffing_water.jpg", class: "img") %>
-		</div>
-		<div class = "col-xs-2" id="sniffing">
-			<%= image_tag("dog_sniffing_185404-980x560.jpg", class: "img") %>
-		</div>
-	</div>
+	</div>	
 </div>
 	
-<%= yield %>
+	<%= yield %>
 
-<div class="footer">
-	<div class="container">
-		<h4 class="pfoot"><span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span></h4>
+	
+		<h4 class="h4bold"><span style="color:greenyellow; font-size:28px; font-weight:bold;">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span></h4>	
+		</div>
 	</div>
-</div>
 </body>
 </html>
