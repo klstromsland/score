@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160127185116) do
     t.integer  "hides_found",                                      default: 0
     t.decimal  "hides_missed",                                     default: 0.0
     t.float    "maxpoint"
-    t.integer  "hides_max"
+    t.integer  "hides_max",                                        default: 0
     t.integer  "other_faults_count",                               default: 0
     t.integer  "search_area"
     t.integer  "total_faults"
