@@ -1,27 +1,25 @@
-<div class="container-fluid">
-	<div class="subheader">
-		<div class="nav">
-			<div class="row">
-				<div class="col-xs-4">		
-					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Update Tally<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
-				</div>
-				<div class="col-xs-4" id="center">
-					<p id="notice"><%= notice %></p>
-				</div>
-				<div class="col-xs-4" id="right">				
-					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
-				</div>				
-			</div>					
-		</div>
-	</div>
-	<div class="partial">
-
-		<%= render "form" %>
-
+<div class="container-fluid" id="nopad">
+	<div class="nav" id="header">
+		<div class="row">
+			<div class="col-xs-4">		
+				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Update Tally<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+			</div>
+			<div class="col-xs-4" id="center">
+				<p id="notice"><%= notice %></p>
+			</div>
+			<div class="col-xs-4" id="right">				
+				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
+			</div>				
+		</div>					
 	</div>
 </div>
-<div class="footer">
+<div class="container-fluid">
+
+	<%= render "form" %>
+
+</div>
+<div class="container-fluid" id="posfix">
 	<div class="nav">
-  <p class="linktopgreen"><%= link_to "Show Tally", @tally %> |
-    <%= link_to "Back to Event", event_path( @tally.event ) %>
-	</p>
+		<ul>
+			<li><p class="linktopgreen"><%= link_to "Show Tally", @tally %> |
+    <%= link_to "Back to Event", event_path( @tally.event ) %></p></li>

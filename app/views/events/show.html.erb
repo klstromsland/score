@@ -1,19 +1,19 @@
-<div class="container-fluid">
-	<div class="subheader">
-		<div class="nav">
-			<div class="row">				
-				<div class="col-xs-4">		
-					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Event<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
-				</div>
-				<div class="col-xs-4" id="center">
-						<p id="notice"><%= notice %></p>
-				</div>					
-				<div class="col-xs-4" id="right">				
-					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
-				</div>				
+<div class="container-fluid" id="nopad">
+	<div class="nav" id="header">
+		<div class="row">				
+			<div class="col-xs-4">		
+				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Event<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+			</div>
+			<div class="col-xs-4" id="center">
+					<p id="notice"><%= notice %></p>
 			</div>					
-		</div>
+			<div class="col-xs-4" id="right">				
+				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
+			</div>				
+		</div>					
 	</div>
+</div>
+<div class="container-fluid">
 	<div class="row">
 	  <div class="col-xs-6">
 			<h1 id="h1"><%= @event.title %>, <%= @event.place %></h2>
@@ -284,7 +284,6 @@
 				<% break %>
 			<% end %>
 		<% end %>		
-
 	<div class="row">
 		<div class="col-xs-2">
 			<% if count == 0 %>
@@ -314,6 +313,7 @@
 	<% end %>	
 	<div id="bdr"></div>	
 </div>
-<div class="footer" id="posfix">
+<div class="container-fluid" id="posfix">
 	<div class="nav">
-		<p class="linktopgreen"><%= link_to "Edit Event", edit_event_path(@event) %> | <%= link_to "Back to Events", events_path %></p>
+		<ul>
+			<li><p class="linkgreen"><%= link_to "Edit Event", edit_event_path(@event) %> | <%= link_to "Back to Events", events_path %></p></li>

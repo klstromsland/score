@@ -7,20 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container-fluid">
-	<div class="header">
-		<div class="nav" id="right">
+<div class="container-fluid" id="nopad">
+		<div class="nav">
 			<% if current_user %>
 				<ul>
-					<li><%= current_user.email %> | <%= link_to "Log out", logout_path, method: "delete" %></li>
+					<li id="right"><a><%= current_user.email %> | <%= link_to "Log out", logout_path, method: "delete" %></a></li>
 				</ul>
 			<% else %>
 				<ul>
-					<li><%= link_to "Log in  |  ", login_path %></a><%= link_to "Sign up", signup_path %></a></li>
+					<li id="right"><a><%= link_to "Log in  |  ", login_path %> <%= link_to "Sign up", signup_path %></a></li>
 				</ul>
 			<% end %>
 		</div>
-		<div class = "nav">	
+		<div class = "row" id="backgroundcolor">	
 			<div class = "col-xs-2" id="sniffingleft">
 				<%= image_tag("P1060231.JPG", class: "img") %>
 			</div>
@@ -40,14 +39,13 @@
 				<%= image_tag("dog_sniffing_185404-980x560.jpg", class: "img") %>
 			</div>
 		</div>
-	</div>	
 </div>
 	
 	<%= yield %>
 
-	
-		<h4 class="h4bold"><span style="color:greenyellow; font-size:28px; font-weight:bold;">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span></h4>	
-		</div>
-	</div>
+			<li id="footerli"><h4 id="footer"><span style="color:greenyellow; font-size:28px; font-weight:bold;">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span>NOSINGforFUN<span style="color:greenyellow; font-size:28px; font-weight:bold">~</span></h4></li>
+		</ul>
+	</div>	
+</div>	
 </body>
 </html>

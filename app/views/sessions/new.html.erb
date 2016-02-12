@@ -1,27 +1,26 @@
-<div class="container-fluid">
-	<div class="subheader">
-		<div class="nav">
-			<div class="row">
-				<div class="col-xs-8">		
-					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Canine Scentwork ScoreSheet Log In<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
-				</div>
-				<div class="col-xs-4" id="right">			
-					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
-				</div>				
-			</div>					
-		</div>
-	</div>
-	<div class="partial" id="center">
+<div class="container-fluid" id="nopad">
+	<div class="nav" id="header">
 		<div class="row">
-			<div class="col-xs-12">
-				<%= form_for(:session, url: login_path) do |f| %>
-					<p class="femail"><%= f.email_field :email, :placeholder => "Email" %></p>
-					<p class="fpassword"><%= f.password_field :password, :placeholder => "Password" %></p>
-					<p><%= f.submit "Log in", class: "action" %></p>
-				<% end %>
+			<div class="col-xs-8">		
+				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Canine Scentwork ScoreSheet Log In<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
 			</div>
+			<div class="col-xs-4" id="right">			
+				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
+			</div>				
+		</div>					
+	</div>
+</div>
+<div class="container-fluid" id="center">
+	<div class="row">
+		<div class="col-xs-12">
+			<%= form_for(:session, url: login_path) do |f| %>
+				<p class="femail"><%= f.email_field :email, :placeholder => "Email" %></p>
+				<p class="fpassword"><%= f.password_field :password, :placeholder => "Password" %></p>
+				<p><%= f.submit "Log in", class: "action" %></p>
+			<% end %>
 		</div>
 	</div>
 </div>
-<div class="footer">
+<div class="container-fluid" id="posfix">
 	<div class="nav">
+		<ul>

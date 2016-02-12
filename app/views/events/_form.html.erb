@@ -142,7 +142,7 @@
 	    <p><%= select_tag "user_team", options_from_collection_for_select(User.all.where("status = 'active'").order("role").order("last_name"), "id", "name_role", @event.users.map{ |u| u.id }), :multiple => true, :include_blank => true, size: 20  %></p>
     </div>
 	  <div class = "col-xs-4">
-	    <p><%= select_tag "team", options_from_collection_for_select(Entrant.all.order("last_name"), "id", "team", @event.entrants.map{ |en| en.id }), :multiple => true, :include_blank => true, size: 20 %></p>
+	    <p id="bottom"><%= select_tag "team", options_from_collection_for_select(Entrant.all.order("last_name"), "id", "team", @event.entrants.map{ |en| en.id }), :multiple => true, :include_blank => true, size: 20 %></p>
     </div>
 	  <div class = "col-xs-4">
 	    <div class="actions">

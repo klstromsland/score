@@ -1,19 +1,19 @@
-<div class="container-fluid">
-	<div class="subheader">
-		<div class="nav">
-			<div class="row">
-				<div class="col-xs-4">		
-					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Event<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
-				</div>
-				<div class="col-xs-4" id="center">
-					<p id="notice"><%= notice %></p>
-				</div>				
-				<div class="col-xs-4" id="right">	
-					<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
-				</div>				
-			</div>					
-		</div>
+<div class="container-fluid" id="nopad">
+	<div class="nav" id="header">
+		<div class="row">
+			<div class="col-xs-4">		
+				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Event<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+			</div>
+			<div class="col-xs-4" id="center">
+				<p id="notice"><%= notice %></p>
+			</div>				
+			<div class="col-xs-4" id="right">	
+				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
+			</div>				
+		</div>					
 	</div>
+</div>
+<div class="container-fluid">
   <div id="bdr"></div>
   <div class="row" id="topmargin">
     <div class="col-xs-2">
@@ -66,7 +66,8 @@
 		</div>
   <% end %>
 </div>
-<div class="footer" id="posfix">
+<div class="container-fluid" id="posfix">
 	<div class="nav">
-		<p class = "linktopgreen"><%= link_to "New Event", new_event_path %></p>
-		<p class = "linktopgreen"><%= link_to "New User", new_user_path %> | <%= link_to "List Users", users_path %> | <%= link_to "New Team", new_entrant_path %> | <%= link_to "List Teams", entrants_path %></p>
+		<ul>
+			<li><p class = "linktopgreen"><%= link_to "New Event", new_event_path %></p></li>
+			<li><p class = "linktopgreen"><%= link_to "New User", new_user_path %> | <%= link_to "List Users", users_path %> | <%= link_to "New Team", new_entrant_path %> | <%= link_to "List Teams", entrants_path %></p></li>
