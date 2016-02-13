@@ -611,6 +611,12 @@ ul {
     font-size:12px;
   }
 
+  .button{
+    font-size:14px;
+    font-weight:bold;
+    padding:5px;
+  }
+
   .img{
     height:80px;
     width:120px;
@@ -687,6 +693,50 @@ ul {
   
   #h4{
     font-size:14px;
+  }
+
+  #h4 {
+    font-size:14px;
+    font-weight:semi-bold;
+    margin:0;
+    padding:0;
+  }
+
+  #h4right {
+    font-size:14px;
+    font-weight:semi-bold;
+    text-align:right;  
+    margin:0;
+    padding:0;
+  }
+
+  #h4bold {
+    font-size:14px;
+    font-weight:bold;
+  }
+
+  #h4boldbottom {
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:20px;
+  }
+
+  #h4boldcenter {
+    font-size:18px;
+    font-weight:bold;
+    text-align:center;
+  }
+
+  #h4boldright {
+    font-size:18px;
+    font-weight:bold;
+    text-align:right;
+  }
+
+  #h4boldtop {
+    font-size:14px;
+    font-weight:bold;
+    margin-top:16px;
   }
   
   #h5{
