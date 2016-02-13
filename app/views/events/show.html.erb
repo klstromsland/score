@@ -13,7 +13,7 @@
 		</div>					
 	</div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="scroll-content">
 	<div class="row">
 	  <div class="col-xs-6">
 			<h1 id="h1"><%= @event.title %>, <%= @event.place %></h2>
@@ -126,9 +126,9 @@
 	<% @event.entrants.each do |entrant| %>
 </div>
 <% if completed_scorecards.include?(entrant.id) && completed_tallies.include?(entrant.id) %>
-<div class="container-fluid" id="complete">
+<div class="container-fluid" id="scroll-content-complete">
 <% else %>
-<div class="container-fluid">
+<div class="container-fluid" id="scroll-content">
 <% end %>
 	<div id="bdr_heavy_top"></div>
 	<h2 id="h2namehighlight"><%= entrant.first_name %> <%= entrant.last_name %> and <%= entrant.dog_name %></h2>
@@ -158,7 +158,7 @@
 		<% if tally.entrant_tly_id == entrant.id %>
 	<div class="row">
 		<div class="col-xs-2">
-			<p class="link"><%= link_to "Tally", tally_path(tally) %></p>
+			<p class="link"><%= link_to "View Tally", tally_path(tally) %></p>
 		</div>
 		<div class="col-xs-2">
 			<p id="center"><%= tally.total_points %></p>
@@ -178,10 +178,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-1">
-			<p class="linktop"><%= link_to_unless(@event.status == "closed", "Tally", edit_tally_path(tally))%></p>
-		</div>
-		<div class="col-xs-3">
-			<h4 id="h4boldtop"><span style="color:#00217f; font-size:20px;">Update Tally</span></h4>
+			<p class="linktop"><%= link_to_unless(@event.status == "closed", "Run Tally", edit_tally_path(tally))%></p>
 		</div>
 	</div>
 	<div id="bdr"></div>
@@ -246,7 +243,7 @@
 		<% end %>	
 	<% end %>
 </div>
-<div class="container-fluid" >	
+<div class="container-fluid" id="scroll-content">	
 	<div id="bdr_heavy_top"></div>
 	<h2 id="h2namehighlight">Placing</h2>
 	<div id="bdr_heavy"></div>
@@ -310,8 +307,7 @@
 		</div>
 	</div>
 		<% count += 1 %>
-	<% end %>	
-	<div id="bdr"></div>	
+	<% end %>		
 </div>
 <div class="container-fluid" id="posfix">
 	<div class="nav">

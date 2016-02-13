@@ -14,9 +14,9 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<%= form_for(:session, url: login_path) do |f| %>
-				<p class="femail"><%= f.email_field :email, :placeholder => "Email" %></p>
-				<p class="fpassword"><%= f.password_field :password, :placeholder => "Password" %></p>
-				<p><%= f.submit "Log in", class: "action" %></p>
+				<h5 class="femail"><%= f.email_field :email, :placeholder => "Email" %></h5>
+				<h5 class="fpassword"><%= f.password_field :password, :placeholder => "Password" %></h5>
+				<h5><%= f.submit "Log in", class: "button" %></h5>
 			<% end %>
 		</div>
 	</div>

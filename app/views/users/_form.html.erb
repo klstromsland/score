@@ -11,21 +11,21 @@
   <% end %>
 	<div class="row">
 		<div class="col-xs-12">
-			<p id="wrap"><%= f.text_field :first_name, :placeholder => "First Name" %>
+			<h5 id="wrap"><%= f.text_field :first_name, :placeholder => "First Name" %>
 			<%= f.text_field :last_name, :placeholder => "Last Name" %>
 			<%= f.text_field :email, :placeholder => "Email" %>
-			<%= f.password_field :password, :placeholder => "Password" %></p>
+			<%= f.password_field :password, :placeholder => "Password" %></h5>
 		</div>
 	</div>
   <div class="row">
 		<div class="col-xs-4">
-			<p><%= f.label :role, "Role: " %><%= f.select( :role, ["Judge", "Certifying Official", "Representative"] ) %></p>
+			<h5><%= f.label :role, "Role: " %><%= f.select( :role, ["Judge", "Certifying Official", "Representative"] ) %></h5>
 		</div>
 		<div class="col-xs-2">
-			<p><%= f.label :status, "Status: " %><%= f.select( :status, ["active", "inactive"] ) %></p>
+			<h5><%= f.label :status, "Status: " %><%= f.select( :status, ["active", "inactive"] ) %></h5>
 		</div>
   </div>
   <div class="actions">
-    <p><%= f.submit "Enter"%></p>
+    <h5><%= f.submit "Enter", class: "button" %></h5>
   </div>
 <% end %>

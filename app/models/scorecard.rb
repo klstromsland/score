@@ -1,6 +1,12 @@
 class Scorecard < ActiveRecord::Base
-  belongs_to :event
-
+  belongs_to :event	
+  validates :maxtime_m, format: { with: %r{[0-9]+[0-9]}, message: 'must be 2 numeric values' }
+  validates :maxtime_s, format: { with: %r{[0-9]+[0-9]}, message: 'must be 2 numeric values' }
+  validates :maxtime_ms, format: { with: %r{[0-9]+[0-9]}, message: 'must be 2 numeric values' }
+  validates :time_elapsed_m, format: { with: %r{[0-9]+[0-9]}, message: 'must be 2 numeric values' }
+  validates :time_elapsed_s, format: { with: %r{[0-9]+[0-9]}, message: 'must be 2 numeric values' }
+  validates :time_elapsed_ms, format: { with: %r{[0-9]+[0-9]}, message: 'must be 2 numeric values' }
+  validates :hides_found, numericality: { less_than_or_equal_to: :hides_max, message: 'must be less than or equal to Hides/Calls' }
   def get_elmSearchAreas(scorecard_id)
     current_scorecard = Scorecard.find_by(id: scorecard_id)
     case current_scorecard.element

@@ -69,7 +69,7 @@
 		
 		<div class="col-xs-4">
 			<div class="actions">
-				<p id="right"><%= f.submit "Tabulate Points" %></p>
+				<p id="right"><%= f.submit "Tabulate Points", class: "button" %></p>
 				<h4 id="h4bold"><span style="color:#bf3d5b"><%= check_hide_count %></span></h4>
 			</div>
 		</div>
@@ -87,7 +87,7 @@
 		</div>
 		<div class="col-xs-4">
 			<div class="actions" id="nomargin">
-				<p id="right"><%= f.submit "Save Hides, Points, Time Limit" %></p>
+				<p id="right"><%= f.submit "Save Hides, Points, Time Limit", class: "button" %></p>
 			</div>
 		</div>		
 	</div>
@@ -128,62 +128,62 @@
 		</div>
 		<div class="col-xs-4" id="nomargin">
 			<p><input type="button" value="Start" id="sw_start" />
-			<input type="button" value="Pause" id="sw_pause" />
+			<input type="button" value="Stop" id="sw_pause" />
 			<!--  <input type="button" value="Stop"  id="sw_stop" />  -->
 			<input type="button" value="Reset" id="sw_reset" />  <span id="sw_status">Idle</span><p>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-4">  
-			<p class="fnumhighlight"><%= f.label :hides_found, "Hides Found: " %><%= f.number_field( :hides_found, in: 0...20, step: 1 ) %></p>
+			<h4 class="fnumhighlight"><%= f.label :hides_found, "Hides Found: " %><%= f.number_field( :hides_found, in: 0...20, step: 1 ) %></h4>
 		</div>
 		
 		<% @scorecard.hides_missed = @scorecard.hides_max - @scorecard.hides_found %>
 		
 		<div class="col-xs-4"> 
-			<p class="fnum"><%= f.label :hides_missed, "Hides Missed: " %><%= f.number_field( :hides_missed, in: 0...20, step: 1 ) %></p>
+			<h4 class="fnum"><%= f.label :hides_missed, "Hides Missed: " %><%= f.number_field( :hides_missed, in: 0...20, step: 1 ) %></p>
 		</div>
 		<div class="col-xs-4" id="right">
-			<p class="fyn"><%= f.label :finish_call, "Finish call: " %><span style="border:3px solid #bf3d5b"><%= f.select( :finish_call, ["yes", "no"], class: "form_input" ) %></span></p>
+			<h4 class="fyn"><%= f.label :finish_call, "Finish call: " %><span style="border:5px solid #bf3d5b"><%= f.select( :finish_call, ["yes", "no"], class: "form_input" ) %></span></h4>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-4">    
-			<p class="fyn"><%= f.label :timed_out, "Timed out: " %><span style="border:3px solid #bf3d5b"><%= f.select( :timed_out, ["no", "yes"], :id => "timed_out_field" ) %></span></p>
+			<h4 class="fyn"><%= f.label :timed_out, "Timed out: " %><span style="border:5px solid #bf3d5b"><%= f.select( :timed_out, ["no", "yes"], :id => "timed_out_field" ) %></span></h4>
 		</div>
 		<div class="col-xs-4">
-			<p class="fnum"><%= f.label :false_alert_fringe, "False alert/fringe: " %><%= f.number_field( :false_alert_fringe, in: 0...10, step: 1 ) %></p>
+			<h4 class="fnum"><%= f.label :false_alert_fringe, "False alert/fringe: " %><%= f.number_field( :false_alert_fringe, in: 0...10, step: 1 ) %></h4>
 		</div>
 		<div class="col-xs-4" id="right">
-			<p class="fyn"><%= f.label :dismissed, "Dismissed: " %><%= f.select( :dismissed, ["no", "yes"] ) %></p>
+			<h4 class="fyn"><%= f.label :dismissed, "Dismissed: " %><%= f.select( :dismissed, ["no", "yes"] ) %></h4>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-4">
-			<p class="fyn"><%= f.label :excused, "Excused: " %><%= f.select( :excused, ["no", "yes"] ) %></p>
+			<h4 class="fyn"><%= f.label :excused, "Excused: " %><%= f.select( :excused, ["no", "yes"] ) %></h4>
 		</div>
 		<div class="col-xs-4">
-			<p class="fyn"><%= f.label :absent, "Absent: " %><%= f.select( :absent, ["no", "yes"] ) %></p>
+			<h4 class="fyn"><%= f.label :absent, "Absent: " %><%= f.select( :absent, ["no", "yes"] ) %></h4>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-4">
-			<p class="fyn"><%= f.label :eliminated_during_search, "Eliminated during search: " %><%= f.select( :eliminated_during_search, ["no", "yes"] ) %></p>
+			<h4 class="fyn"><%= f.label :eliminated_during_search, "Eliminated during search: " %><%= f.select( :eliminated_during_search, ["no", "yes"] ) %></h4>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">	
 			<div class="field">
-				<p><%= f.label :other_faults_descr, "Other faults (describe): " %></p>
+				<h4><%= f.label :other_faults_descr, "Other faults (describe): " %></h4>
 				<%= f.text_area :other_faults_descr, size: "80X60", placeholder: "Describe faults..." %>
 			</div>
 		</div>
 	</div>			
 	<div class="field">
-		<p class="fnum"><%= f.label :other_faults_count, "Other faults count: " %><%= f.number_field( :other_faults_count, in: 0...10, step: 1 ) %></p>
+		<h4 class="fnum"><%= f.label :other_faults_count, "Other faults count: " %><%= f.number_field( :other_faults_count, in: 0...10, step: 1 ) %></h4>
 	</div>
 	<div class="field">
-		<p><%= f.label :comments, "Comments: " %></p>
+		<h4><%= f.label :comments, "Comments: " %></h4>
 		<%= f.text_area :comments, size: "80X60", placeholder: "Enter comments..." %>
 	</div>
 	<div id="bdr"></div>
@@ -215,12 +215,15 @@
 			<h4 class="fyn" id="h4"><%= f.label :pronounced, "Pronounced: " %><span style="border:4px solid #bf3d5b"><%= f.select( :pronounced, ["no", "yes"] ) %></span></h4>
 		</div>		
 		<div class="col-xs-2">
-			<p id="wrap"><%= f.submit "Tabulate Score" %>
+			<%= f.submit "Tabulate Score", class: "button"%>
 		</div>
 		<div class="actions" id="nomargin">
-			<div class="col-xs-6" id="right">
-				<h4 id="h4"><%= f.label :judge_signature, "Judge Signature: " %><span style="border:4px solid #bf3d5b"><%= f.select :judge_signature, ["no", "yes"] %></span><span style="font-size:14px">  <%= f.submit "Final Submit" %></span></h4> 
+			<div class="col-xs-4" id="right">
+				<h4 id="h4"><%= f.label :judge_signature, "Judge Signature: " %><span style="border:5px solid #bf3d5b"><%= f.select :judge_signature, ["no", "yes"] %></span></h4> 
 			</div>
+			<div class="col-xs-2" id="right">
+				<%= f.submit "Final Submit", class: "button" %>
+			</div>			
 		</div>
 	</div>
 <% end %>

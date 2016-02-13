@@ -93,25 +93,25 @@
 	<% @tally.get_tally(@tally.id) %>
 	<div class="row">
 		<div class="col-xs-2">
-			<p><%= f.select :title, ["Not this time", "Titled"]  %></p>
+			<h5><%= f.select :title, ["Not this time", "Titled"]  %></h5>
 		</div>
 		<div class="col-xs-2" id="center">
-			<p class="fnum"><%= f.number_field :total_points, placeholder: 0 %></p>
+			<h5 class="fnum"><%= f.number_field :total_points, placeholder: 0 %></h5>
 		</div>
 		<div class="col-xs-2" id="center">
-			<p class="ftime"><%= f.text_field :total_time_m, placeholder: "00" %>:<%= f.text_field :total_time_s, placeholder: "00" %>:<%= f.text_field :total_time_ms, placeholder: "00" %></p>
+			<h5 class="ftime"><%= f.text_field :total_time_m, placeholder: "00" %>:<%= f.text_field :total_time_s, placeholder: "00" %>:<%= f.text_field :total_time_ms, placeholder: "00" %></h5>
 		</div>
 		<div class="col-xs-2" id="center">
-			<p class="fnum"><%= f.number_field :total_faults, placeholder: 0 %></p>
+			<h5 class="fnum"><%= f.number_field :total_faults, placeholder: 0 %></h5>
 		</div>
 		<div class="col-xs-2" id="center">
-			<p class="fnum"><%= f.number_field :qualifying_score, placeholder: 0 %></p>
+			<h5 class="fnum"><%= f.number_field :qualifying_score, placeholder: 0 %></h5>
 		</div>
 		<div class="col-xs-2" id="center">
-			<p class="fnum"><%= f.number_field :qualifying_scores, placeholder: 0 %></p>
+			<h5 class="fnum"><%= f.number_field :qualifying_scores, placeholder: 0 %></h5>
 		</div>
 	</div>	
 	<div class="actions">
-		<p id="bottom"><%= f.submit %></p>
+		<p><%= f.submit class: "button" %></p>
 	</div>
 <% end %>

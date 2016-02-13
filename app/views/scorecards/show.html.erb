@@ -13,7 +13,7 @@
 		</div>					
 	</div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="scroll-content">
 	<h1 id="h1"><%= @scorecard.event.title %> Scorecard</h1>
 	<div id="bdr"></div>
 	<div class="row">
@@ -69,56 +69,56 @@
 	<% end %>
 	<div class="row">
 		<div class="col-xs-3">
-			<p>Search Area: <%= @scorecard.search_area %></p> 
+			<h4 id="h4">Search Area: <%= @scorecard.search_area %></h4> 
 		</div>
 		<div class="col-xs-3">
-			<p>Search Area Hides: <%= @scorecard.hides_max %></p> 
+			<h4 id="h4">Search Area Hides: <%= @scorecard.hides_max %></h4> 
 		</div>
 		<div class="col-xs-3">
-			<p>Hides found: <%= @scorecard.hides_found %></p> 
+			<h4 id="h4">Hides found: <%= @scorecard.hides_found %></h4> 
 		</div>
 		<div class="col-xs-3" id="right">
-			<p>Hides missed: <%= @scorecard.hides_missed %></p> 
+			<h4 id="h4">Hides missed: <%= @scorecard.hides_missed %></h4> 
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-3">
-			<p>Finish call: <%= @scorecard.finish_call %></p> 
+			<h4 id="h4">Finish call: <%= @scorecard.finish_call %></h4> 
 		</div>
 		<div class="col-xs-3">
-			<p>False alert/fringe: <%= @scorecard.false_alert_fringe %></p> 
+			<h4 id="h4">False alert/fringe: <%= @scorecard.false_alert_fringe %></h4> 
 		</div>
 		<div class="col-xs-3">
-			<p>Timed out: <%= @scorecard.timed_out %></p> 
+			<h4 id="h4">Timed out: <%= @scorecard.timed_out %></h4> 
 		</div>
 		<div class="col-xs-3" id="right">
-			<p>Dismissed: <%= @scorecard.dismissed %></p> 
+			<h4 id="h4">Dismissed: <%= @scorecard.dismissed %></h4> 
 		</div>    
 	</div>
 	<div class="row">
 		<div class="col-xs-3">
-			<p>Excused: <%= @scorecard.excused %></p> 
+			<h4 id="h4">Excused: <%= @scorecard.excused %></h4> 
 		</div>
 		<div class="col-xs-3">
-			<p>Absent: <%= @scorecard.absent %></p> 
+			<h4 id="h4">Absent: <%= @scorecard.absent %></h4> 
 		</div>
 		<div class="col-xs-4">
-			<p>Eliminated during search: <%= @scorecard.eliminated_during_search %></p> 
+			<h4 id="h4">Eliminated during search: <%= @scorecard.eliminated_during_search %></h4> 
 		</div>    
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<p>Other faults descr: <%= @scorecard.other_faults_descr %></p>
+			<h4 id="h4">Other faults descr: <%= @scorecard.other_faults_descr %></h4>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-4">
-			<p>Other faults count:  <%= @scorecard.other_faults_count %></p>
+			<h4 id="h4">Other faults count:  <%= @scorecard.other_faults_count %></h4>
 		</div>
 	</div>  
 	<div class="row"> 
 		<div class="col-xs-12">
-			<p>Comments: <%= @scorecard.comments %></p>
+			<h4 id="h4">Comments: <%= @scorecard.comments %></h4>
 		</div>
 	</div>
 	<div id="bdr"></div>
@@ -151,7 +151,7 @@
 		</div>
 	</div>
 	<div id="bdr"></div>
-	<h4 id="h4boldbottom">Judge signature: <%= @scorecard.judge_signature %></h4>
+	<h4>Judge signature: <%= @scorecard.judge_signature %></h4>
 </div>
 <div class="container-fluid" id="posfix">
 	<div class="nav">
