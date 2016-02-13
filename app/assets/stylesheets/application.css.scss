@@ -742,4 +742,25 @@ ul {
   #h5{
     font-size:12px;
   }
+
+  #sw_pause{
+    margin:5px 15px 0 0;
+    font-size:12px;
+    font-weight:bold;
+    padding:5px;  
+  }
+
+  #sw_reset{
+    margin:5px 0 0 0;
+    font-size:12px;
+    font-weight:bold;
+    padding:5px;  
+  }
+
+  #sw_status{
+    color:greenyellow;
+    font-size:12px;
+    padding-left:10px
+  }
+  
 }
