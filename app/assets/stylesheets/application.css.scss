@@ -21,7 +21,7 @@ html, body {
   font-family: 'Roboto', sans-serif;
   max-width:1200px;
   left:50px;
-  margin:auto auto auto 50px;
+  margin:auto 50px auto 100px;
   padding:auto;
 }
 
@@ -92,6 +92,7 @@ ul {
 .nav a:hover{
   font-size:14px;
   color:greenyellow;
+  background-color:#00217f;
   text-decoration:none;
   margin:0;
   padding:0;
@@ -113,6 +114,7 @@ ul {
 .container-fluid{
   background-color:white;
   padding-bottom:20px;
+  padding-top:10px;
 }
 
 .col-xs-1 {
@@ -380,6 +382,11 @@ ul {
   font-weight:bold;
 }
 
+#complete {
+  padding:0 30px 20px 30px;
+  background-color:#e1e1ed;
+}
+
 #footer{
   font-size:18px;
   font-weight:bold;  
@@ -516,6 +523,10 @@ ul {
   white-space:nowrap;
 }
 
+#padbottom {
+  padding-bottom:300px;
+}
+
 #paddingright {
   padding-right:110px;
 }
@@ -529,17 +540,6 @@ ul {
 
 #right {
   text-align:right;
-}
-
-#scroll-content {
-  padding:0 30px 20px 30px;
-  -webkit-overflow-scrolling:touch;
-}
-
-#scroll-content-complete {
-  padding:0 30px 20px 30px;
-  -webkit-overflow-scrolling:touch;
-  background-color:#e1e1ed;
 }
 
 #sniffing {
@@ -597,7 +597,7 @@ ul {
 }
 
 #topmargin {
-  margin-top:60px;
+  margin-top:30px;
 }
 
 #wrap {

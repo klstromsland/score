@@ -8,37 +8,37 @@
 </head>
 <body>
 <div class="container-fluid" id="nopad">
-		<div class="nav">
-			<% if current_user %>
-				<ul>
-					<li id="right"><a><%= current_user.email %> | <%= link_to "Log out", logout_path, method: "delete" %></a></li>
-				</ul>
-			<% else %>
-				<ul>
-					<li id="right"><a><%= link_to "Log in  |  ", login_path %> <%= link_to "Sign up", signup_path %></a></li>
-				</ul>
-			<% end %>
+	<div class="nav">
+		<% if current_user %>
+			<ul>
+				<li id="right"><a><%= current_user.email %> | <%= link_to "Log out", logout_path, method: "delete" %></a></li>
+			</ul>
+		<% else %>
+			<ul>
+				<li id="right"><a><%= link_to "Log in  |  ", login_path %> <%= link_to "Sign up", signup_path %></a></li>
+			</ul>
+		<% end %>
+	</div>
+	<div class="row" id="backgroundcolor">	
+		<div class="col-xs-2" id="sniffingleft">
+			<%= image_tag("P1060231.JPG", class: "img") %>
 		</div>
-		<div class = "row" id="backgroundcolor">	
-			<div class = "col-xs-2" id="sniffingleft">
-				<%= image_tag("P1060231.JPG", class: "img") %>
-			</div>
-			<div class = "col-xs-2" id="sniffing">
-				<%= image_tag("two-dogs-sniffing.jpg", class: "img") %>
-			</div>
-			<div class = "col-xs-2" id="sniffing">
-				<%= image_tag("dog-142328_1920.jpg", class: "img") %>
-			</div>
-			<div class = "col-xs-2" id="sniffing">
-				<%= image_tag("7175995318_b30fb66085_m.jpg", class: "img") %>
-			</div>	
-			<div class = "col-xs-2" id="sniffing">
-				<%= image_tag("dog_sniffing_water.jpg", class: "img") %>
-			</div>
-			<div class = "col-xs-2" id="sniffingright">
-				<%= image_tag("dog_sniffing_185404-980x560.jpg", class: "img") %>
-			</div>
+		<div class="col-xs-2" id="sniffing">
+			<%= image_tag("two-dogs-sniffing.jpg", class: "img") %>
 		</div>
+		<div class="col-xs-2" id="sniffing">
+			<%= image_tag("dog-142328_1920.jpg", class: "img") %>
+		</div>
+		<div class="col-xs-2" id="sniffing">
+			<%= image_tag("7175995318_b30fb66085_m.jpg", class: "img") %>
+		</div>	
+		<div class="col-xs-2" id="sniffing">
+			<%= image_tag("dog_sniffing_water.jpg", class: "img") %>
+		</div>
+		<div class="col-xs-2" id="sniffingright">
+			<%= image_tag("dog_sniffing_185404-980x560.jpg", class: "img") %>
+		</div>
+	</div>
 </div>
 	
 	<%= yield %>

@@ -13,7 +13,7 @@
 		</div>					
 	</div>
 </div>
-<div class="container-fluid" id="scroll-content">
+<div class="container-fluid">
 	<div class="row">
 	  <div class="col-xs-6">
 			<h1 id="h1"><%= @event.title %>, <%= @event.place %></h2>
@@ -126,9 +126,9 @@
 	<% @event.entrants.each do |entrant| %>
 </div>
 <% if completed_scorecards.include?(entrant.id) && completed_tallies.include?(entrant.id) %>
-<div class="container-fluid" id="scroll-content-complete">
+<div class="container-fluid" id="complete">
 <% else %>
-<div class="container-fluid" id="scroll-content">
+<div class="container-fluid">
 <% end %>
 	<div id="bdr_heavy_top"></div>
 	<h2 id="h2namehighlight"><%= entrant.first_name %> <%= entrant.last_name %> and <%= entrant.dog_name %></h2>
@@ -243,7 +243,7 @@
 		<% end %>	
 	<% end %>
 </div>
-<div class="container-fluid" id="scroll-content">	
+<div class="container-fluid" id="padbottom">	
 	<div id="bdr_heavy_top"></div>
 	<h2 id="h2namehighlight">Placing</h2>
 	<div id="bdr_heavy"></div>
