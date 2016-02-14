@@ -213,14 +213,14 @@
 	</div>
 	<div class="row" id="paddingbottom">
 		<div class="col-xs-4">
-			<h4 class="fyn" id="h4"><%= f.label :pronounced, "Pronounced: " %><span style="border:4px solid #bf3d5b"><%= f.select( :pronounced, ["no", "yes"] ) %></span></h4>
+			<h4 id="h4"><%= f.label :pronounced, "Pronounced: ", class: "fyn"  %><span style="border:4px solid #bf3d5b"><%= f.select :pronounced, ["no", "yes"], class: "fyn"  %></span></h4>
 		</div>		
 		<div class="col-xs-2">
 			<%= f.submit "Tabulate Score", class: "button"%>
 		</div>
 		<div class="actions" id="nomargin">
 			<div class="col-xs-4" id="right">
-				<h4 id="h4"><%= f.label :judge_signature, "Judge Signature: " %><span style="border:5px solid #bf3d5b"><%= f.select :judge_signature, ["no", "yes"] %></span></h4> 
+				<h4 id="h4"><%= f.label :judge_signature, "Judge Signature: ", class: "fyn" %><span style="border:5px solid #bf3d5b"><%= f.select :judge_signature, ["no", "yes"], class: "fyn" %></span></h4> 
 			</div>
 			<div class="col-xs-2">
 				<span id="right"><%= f.submit "Final Submit", class: "button"%></span>

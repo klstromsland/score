@@ -20,7 +20,7 @@ html, body, footer {
   background-color:#00217f;
   font-family: 'Roboto', sans-serif;
   max-width:1200px;
-  min-width:750px;
+  min-width:940px;
   left:50px;
   margin:auto 50px auto 50px;
   padding:auto;
@@ -63,8 +63,8 @@ ul {
 } 
 
 .img{
-  height:140px;
-  width:180px;
+  height:100px;
+  width:140px;
   margin:0;
   padding:0;
 }
@@ -338,6 +338,10 @@ ul {
   width:60px;
   text-align:center;
   font-size:14px;
+}
+
+.fyn{
+  margin-top:10px;
 }
 
 .ftext input[type="text"] {
