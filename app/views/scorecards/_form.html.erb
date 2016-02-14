@@ -16,8 +16,8 @@
 	<div class="col-xs-3">
 		<h4 id="h4bold"><%= @scorecard.event.date %></h4> 
 	</div>  
-	<div class="col-xs-3" id="right">
-		<h4 id="h4bold">Division: <%= @scorecard.event.division %></h4> 
+	<div class="col-xs-3">
+		<h4 id="h4boldright">Division: <%= @scorecard.event.division %></h4> 
 	</div>
 </div>
 
@@ -52,8 +52,8 @@
 	  <div class="col-xs-6">
 			<h4 id="h4bold">Total <%= @scorecard.element %> Search Areas: <%= @scorecard.get_elmSearchAreas(@scorecard.id) %></h4>
 		</div>
-	  <div class="col-xs-6" id="right">
-			<h4 id="h4bold">Total <%= @scorecard.element %> Hides: <%= @scorecard.get_elmHides(@scorecard.id) %></h4>
+	  <div class="col-xs-6">
+			<h4 id="h4boldright">Total <%= @scorecard.element %> Hides: <%= @scorecard.get_elmHides(@scorecard.id) %></h4>
 		</div>		
 	</div>
 	<div id="bdr"></div>
@@ -87,7 +87,7 @@
 		</div>
 		<div class="col-xs-4">
 			<div class="actions" id="nomargin">
-				<p id="right"><%= f.submit "Save Hides, Points, Time Limit", class: "button" %></p>
+				<p id="right"><%= f.submit "Save Points, Time Limit", class: "button" %></p>
 			</div>
 		</div>		
 	</div>
@@ -98,8 +98,8 @@
 				<div class="col-xs-8">
 					<h4 id="h4bold">Handler: <span style=font-size:20px; id="fontcolor"><%= entrant.first_name %> <%= entrant.last_name %></span></h4> 
 				</div>
-				<div class="col-xs-4" id="right">
-					<h4 id="h4bold">ID:  <strong id="fontcolor"><%= entrant.idnumber %></strong></h4> 
+				<div class="col-xs-4">
+					<h4 id="h4boldright">ID:  <strong id="fontcolor"><%= entrant.idnumber %></strong></h4> 
 				</div>
 			</div>
 			<div class="row">
@@ -109,15 +109,15 @@
 				<div class="col-xs-5">
 					<h4 id="h4bold">Breed:  <strong id="fontcolor"><%= entrant.breed %></strong></h4> 
 				</div>
-				<div class="col-xs-3" id="right">
-					<h4 id="h4bold">K9ID:  <strong id="fontcolor":><%= entrant.dogidnumber %></strong></h4> 
+				<div class="col-xs-3">
+					<h4 id="h4boldright">K9ID:  <strong id="fontcolor":><%= entrant.dogidnumber %></strong></h4> 
 				</div>
 			</div>  
 		<% end %>
 	<% end %>
 	<div class="row" id="stopwatch">
 		<div class="col-xs-4" id="nomargin">
-			<h1 id="h1sw"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Stopwatch<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+			<h1 id="h1sw"><span id="tilda">~</span><span id="whitetxt">Stopwatch<span id="tilda">~</span></span></h1>
 		</div>
 		<div class="col-xs-4" id="nomargin">
 			<div class="timeread">
@@ -130,7 +130,8 @@
 			<p><input type="button" value="Start" id="sw_start" />
 			<input type="button" value="Stop" id="sw_pause" />
 			<!--  <input type="button" value="Stop"  id="sw_stop" />  -->
-			<input type="button" value="Reset" id="sw_reset" />  <span id="sw_status">Idle</span><p>
+			<input type="button" value="Reset" id="sw_reset" /></p>
+			<p id="sw_status">Idle</p>
 		</div>
 	</div>
 	<div class="row">
@@ -143,8 +144,8 @@
 		<div class="col-xs-4"> 
 			<h4 class="fnum"><%= f.label :hides_missed, "Hides Missed: " %><%= f.number_field( :hides_missed, in: 0...20, step: 1 ) %></p>
 		</div>
-		<div class="col-xs-4" id="right">
-			<h4 class="fyn"><%= f.label :finish_call, "Finish call: " %><span style="border:5px solid #bf3d5b"><%= f.select( :finish_call, ["yes", "no"], class: "form_input" ) %></span></h4>
+		<div class="col-xs-4">
+			<h4 class="fyn" id="right"><%= f.label :finish_call, "Finish call: " %><span style="border:5px solid #bf3d5b"><%= f.select( :finish_call, ["yes", "no"], class: "form_input" ) %></span></h4>
 		</div>
 	</div>
 	<div class="row">
@@ -154,8 +155,8 @@
 		<div class="col-xs-4">
 			<h4 class="fnum"><%= f.label :false_alert_fringe, "False alert/fringe: " %><%= f.number_field( :false_alert_fringe, in: 0...10, step: 1 ) %></h4>
 		</div>
-		<div class="col-xs-4" id="right">
-			<h4 class="fyn"><%= f.label :dismissed, "Dismissed: " %><%= f.select( :dismissed, ["no", "yes"] ) %></h4>
+		<div class="col-xs-4">
+			<h4 class="fyn" id="right"><%= f.label :dismissed, "Dismissed: " %><%= f.select( :dismissed, ["no", "yes"] ) %></h4>
 		</div>
 	</div>
 	<div class="row">
@@ -206,8 +207,8 @@
 		
 		<% @scorecard.get_points(@scorecard.id) %>
 		
-		<div class="col-xs-4" id="right">			
-			<h4 class="fnumhighlight" id="h4"><%= f.label :total_points, "Total points: " %><%= f.number_field :total_points %></h4>
+		<div class="col-xs-4">			
+			<h4 class="fnumhighlight" id="h4right"><%= f.label :total_points, "Total points: " %><%= f.number_field :total_points %></h4>
 		</div>
 	</div>
 	<div class="row" id="paddingbottom">
@@ -221,8 +222,8 @@
 			<div class="col-xs-4" id="right">
 				<h4 id="h4"><%= f.label :judge_signature, "Judge Signature: " %><span style="border:5px solid #bf3d5b"><%= f.select :judge_signature, ["no", "yes"] %></span></h4> 
 			</div>
-			<div class="col-xs-2" id="right">
-				<%= f.submit "Final Submit", class: "button" %>
+			<div class="col-xs-2">
+				<span id="right"><%= f.submit "Final Submit", class: "button"%></span>
 			</div>			
 		</div>
 	</div>

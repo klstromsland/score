@@ -1,14 +1,14 @@
-<div class="container-fluid" id="nopad">
-	<div class="nav" id="header">
+<div class="nav" id="header">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-4">		
-				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Users<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+			<div class="col-xs-4" id="left">		
+				<h1 id="h1"><span id="tilda">~</span><span id="whitetxt">Users</span><span id="tilda">~</span></h1>
 			</div>
 			<div class="col-xs-4" id="center">
 				<p id="notice"><%= notice %></p>
 			</div>
-			<div class="col-xs-4" id="right">		
-				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
+			<div class="col-xs-4" id="right">			
+				<h1 id="h1right"><span id="greenyellow">Demo Use Only</span></h1>
 			</div>				
 		</div>					
 	</div>
@@ -31,24 +31,25 @@
 	<% @users.order("last_name").each do |user| %>
 		<div class="row">
 			<div class="col-xs-2">
-				<p><%= user.first_name %></p>
+				<h5 id="h5"><%= user.first_name %></h5>
 			</div>
 			<div class="col-xs-2">
-				<p><%= user.last_name %></p>
+				<h5 id="h5"><%= user.last_name %></h5>
 			</div>
-			<div class="col-xs-2">
-				<p><%= user.role %></p>
+			<div class="col-xs-3">
+				<h5 id="h5"><%= user.role %></h5>
 			</div>
 			<div class="col-xs-1">
-				<p><%= user.status %></p>
+				<h5 id="h5"><%= user.status %></h5>
 			</div>
-			<div class="col-xs-2">
-				<p class="link"><%= link_to "Show", user %> | <%= link_to "Edit", edit_user_path(user) %> | <%= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" } %></p>
+			<div class="col-xs-4">
+				<p class="linksm"><%= link_to "Show", user %> | <%= link_to "Edit", edit_user_path(user) %> | <%= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" } %></p>
 			</div>
 		</div>
 	<% end %>
 </div>
-<div class="container-fluid" id="posfix">
-	<div class="nav">
-		<ul>
-			<li><p class="linktopgreen"><%= link_to "Back to Events", events_path %> | <%= link_to "New User", new_user_path %></p></li>
+<div class="nav">
+	<div class="container-fluid" id="posfix">
+		<footer>
+			<ul id="nopad">
+				<li><p class="linktopgreen"><%= link_to "Back to Events", events_path %> | <%= link_to "New User", new_user_path %></p></li>

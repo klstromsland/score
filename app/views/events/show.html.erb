@@ -1,19 +1,19 @@
-<div class="container-fluid" id="nopad">
-	<div class="nav" id="header">
+<div class="nav" id="header">
+	<div class="container-fluid">
 		<div class="row">				
-			<div class="col-xs-4">		
-				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Event<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+			<div class="col-xs-4" id="left">		
+				<h1 id="h1"><span id="tilda">~</span><span id="whitetxt">Event</span><span id="tilda">~</span></h1>
 			</div>
 			<div class="col-xs-4" id="center">
 					<p id="notice"><%= notice %></p>
 			</div>					
 			<div class="col-xs-4" id="right">				
-				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
+				<h1 id="h1right"><span id="greenyellow">Demo Use Only</span></h1>
 			</div>				
 		</div>					
 	</div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="white">
 	<div class="row">
 	  <div class="col-xs-6">
 			<h1 id="h1"><%= @event.title %>, <%= @event.place %></h2>
@@ -128,7 +128,7 @@
 <% if completed_scorecards.include?(entrant.id) && completed_tallies.include?(entrant.id) %>
 <div class="container-fluid" id="complete">
 <% else %>
-<div class="container-fluid">
+<div class="container-fluid" id="white">
 <% end %>
 	<div id="bdr_heavy_top"></div>
 	<h2 id="h2namehighlight"><%= entrant.first_name %> <%= entrant.last_name %> and <%= entrant.dog_name %></h2>
@@ -197,10 +197,10 @@
 	<div id="bdr"></div>
 	<div class="row">
 		<div class="col-xs-8">
-			<h4 id="h4boldtop"><span style="color:#00217f; font-size:20px;">View Scorecards</span></h4>
+			<h4 id="h4boldtop"><span style="color:#00217f; font-size:22px;">View Scorecards</span></h4>
 		</div>
 		<div class="col-xs-4">
-			<h4 id="h4boldtop"><span style="color:#00217f; font-size:20px;">Run Scorecards</span></h4>
+			<h3 id="h4boldtop"><span style="color:#00217f; font-size:22px;">Run Scorecards</span></h4>
 		</div>
 	</div>
 	<div class="row">
@@ -309,7 +309,8 @@
 		<% count += 1 %>
 	<% end %>		
 </div>
-<div class="container-fluid" id="posfix">
-	<div class="nav">
-		<ul>
-			<li><p class="linkgreen"><%= link_to "Edit Event", edit_event_path(@event) %> | <%= link_to "Back to Events", events_path %></p></li>
+<div class="nav">
+	<div class="container-fluid" id="posfix">
+		<footer>
+			<ul id="nopad">
+				<li><p class="linktopgreen"><%= link_to "Edit Event", edit_event_path(@event) %> | <%= link_to "Back to Events", events_path %></p></li>

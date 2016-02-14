@@ -1,17 +1,17 @@
-<div class="container-fluid" id="nopad">
-	<div class="nav" id="header">
+<div class="nav" id="header">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-8">		
-				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">~</span><span style="color:white">Canine Scentwork ScoreSheet Log In<span style="color:greenyellow; font-weight:bold">~</span></span></h1>
+			<div class="col-xs-8" id="left">	
+				<h2 id="h2"><span id="tilda">~</span><span id="whitetxt">Canine Scentwork ScoreSheet<span id="tilda">~</span></h2>
 			</div>
 			<div class="col-xs-4" id="right">			
-				<h1 id="h1"><span style="color:greenyellow; font-weight:bold">Demo Use Only</span></h1>
+				<h2 id="h2right"><span id="greenyellow">Demo Use Only</span></h2>
 			</div>				
 		</div>					
 	</div>
 </div>
-<div class="container-fluid" id="center">
-	<div class="row">
+<div class="container-fluid" id="padbottom">
+	<div class="row" id="center">
 		<div class="col-xs-12">
 			<%= form_for(:session, url: login_path) do |f| %>
 				<h5 class="femail"><%= f.email_field :email, :placeholder => "Email" %></h5>
@@ -21,6 +21,7 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid" id="posfix">
-	<div class="nav">
-		<ul>
+<div class="nav">
+	<div class="container-fluid" id="posfix">
+		<footer>
+			<ul id="nopad">
