@@ -21,7 +21,7 @@ html, body {
   font-family: 'Roboto', sans-serif;
   max-width:1200px;
   left:50px;
-  margin:auto 50px auto 50px;
+  margin:auto 50px -250px 50px;
   padding:auto;
 }
 
@@ -597,7 +597,7 @@ ul {
 }
 
 #padbottom {
-  padding-bottom:250px;
+  padding-bottom:200px;
   background-color:white;
 }
 
@@ -619,9 +619,15 @@ ul {
   margin-right:0;
 }
 
-#sniffing {
+#sniffingleftside{
   margin:20px 0 0 0;
-  padding:0;
+  padding:0 4px 0 0;
+  text-align:center;
+}
+
+#sniffingrightside{
+  margin:20px 0 0 0;
+  padding:0 0 0 4px;
   text-align:center;
 }
 
@@ -629,7 +635,6 @@ ul {
   margin:20px 0 0 0;
   padding:0;
   text-align:right;
-  overflow:hidden;
 }
 
 #sniffingleft{
