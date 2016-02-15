@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.10'
 # gem 'unicorn'
 
 gem 'mini_portile', '~> 0.6.2'
-
+gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
