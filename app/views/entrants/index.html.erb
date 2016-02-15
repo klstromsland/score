@@ -15,7 +15,7 @@
 </div>
 <div class="container-fluid" id="padbottom">
 	<div class="row">
-		<div class="col-xs-2">
+		<div class="col-xs-1">
 			<h4 id="h4bold">First Name</h4>
 		</div>
 		<div class="col-xs-2">
@@ -36,7 +36,7 @@
 	</div>
 	<% @entrants.order("last_name").each do |entrant| %>
 	<div class="row">
-		<div class="col-xs-2">
+		<div class="col-xs-1">
 			<p><%= entrant.first_name %></p>
 		</div>
 		<div class="col-xs-2">
@@ -54,8 +54,8 @@
 		<div class="col-xs-2">
 			<p><%= entrant.breed %></p>
 		</div>
-		<div class="col-xs-2">
-			<p class="linksm" id="right"><%= link_to "Show", entrant %> | <%= link_to "Edit", edit_entrant_path(entrant) %> | <%= link_to "Remove", entrant, method: :delete, data: { confirm: "Are you sure?" } %></p>
+		<div class="col-xs-3">
+			<p class="linksm"><%= link_to "Show", entrant %> | <%= link_to "Edit", edit_entrant_path(entrant) %> | <%= link_to "Remove", entrant, method: :delete, data: { confirm: "Are you sure?" } %></p>
 		</div>
 	</div>	
 <% end %>

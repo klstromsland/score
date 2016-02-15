@@ -16,11 +16,10 @@
  *= require bootstrap.min.css
  */
 
-html, body, footer {
+html, body {
   background-color:#00217f;
   font-family: 'Roboto', sans-serif;
   max-width:1200px;
-  min-width:940px;
   left:50px;
   margin:auto 50px auto 50px;
   padding:auto;
@@ -598,7 +597,7 @@ ul {
 }
 
 #padbottom {
-  padding-bottom:300px;
+  padding-bottom:250px;
   background-color:white;
 }
 
