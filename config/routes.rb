@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'events#index'
+  get 'Info' => 'events#info', as: :general_info
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
