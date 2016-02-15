@@ -251,17 +251,20 @@
 		<div class="col-xs-2">				
 			<p class="evshowb">Place</p>
 		</div>
-		<div class="col-xs-2">				
+		<div class="col-xs-1">				
+			<p class="evshowb" id="center">Title</p>
+		</div>		
+		<div class="col-xs-1">				
 			<p class="evshowb" id="center">Points</p>
-		</div>					
+		</div>		
 		<div class="col-xs-2">				
 			<p class="evshowb" id="center">Time</p>
 		</div>				
-		<div class="col-xs-2">				
+		<div class="col-xs-1">				
 			<p class="evshowb" id="center">Faults</p>
 		</div>				
 		<div class="col-xs-4">				
-			<p class="evshowb" id="center">Team</p>
+			<p class="evshowb">Team</p>
 		</div>				
 	</div>	
 	<% @tally = nil %>
@@ -292,18 +295,23 @@
 			<% else %>
 			  <p> </p>
 			<% end %>
-		</div>				
-		<div class="col-xs-2">
+		</div>
+		<div class="col-xs-1">
+			<% if @tally.title == "Titled" %>
+				<p id="center"><%= @tally.title %></p>
+			<% end %>
+		</div>		
+		<div class="col-xs-1">
 			<p id="center"><%= @tally.total_points %></p>
 		</div>
 		<div class="col-xs-2">
 			<p id="center"><%= @tally.total_time_m %>:<%= @tally.total_time_s %>:<%= @tally.total_time_ms %></p>
 		</div> 
-		<div class="col-xs-2">
+		<div class="col-xs-1">
 			<p id="center"><%= @tally.total_faults %></p>
 		</div>
 		<div class = "col-xs-4">
-			<p id="center"><%= @entrant.first_name %> <%= @entrant.last_name %> and <%= @entrant.dog_name %></p>
+			<p><%= @entrant.first_name %> <%= @entrant.last_name %> and <%= @entrant.dog_name %></p>
 		</div>
 	</div>
 		<% count += 1 %>
