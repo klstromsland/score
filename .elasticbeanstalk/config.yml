@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: ScoreSheet-env
+    environment: null
     group_suffix: null
 global:
   application_name: ScoreSheet
