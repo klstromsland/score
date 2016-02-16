@@ -31,7 +31,7 @@ class EntrantsController < ApplicationController
 
     respond_to do |format|
       if @entrant.save
-        format.html { redirect_to @entrant, notice: 'Entrant was successfully created.' }
+        format.html { redirect_to @entrant, notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @entrant }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class EntrantsController < ApplicationController
     @entrant = Entrant.find(params[:id])
     respond_to do |format|
       if @entrant.update(entrant_params)
-        format.html { redirect_to @entrant, notice: 'Entrant was successfully updated.' }
+        format.html { redirect_to @entrant, notice: 'Team was successfully updated.' }
         format.json { render :show, status: :ok, location: @entrant }
       else
         format.html { render :edit }
@@ -73,6 +73,6 @@ class EntrantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entrant_params
-      params.require(:entrant).permit(:first_name, :last_name, :idnumber, :dog_name, :dogidnumber, :breed, event_ids => [])
+      params.require(:entrant).permit(:first_name, :last_name, :idnumber, :dog_name, :dogidnumber, :breed, :event_ids => [])
     end
 end
