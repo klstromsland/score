@@ -11,10 +11,10 @@ gem 'rails_12factor', group: :production
 # Use sqlite3 as the database for Active Record
 
 # Use production for AWS Beanstalk
-#gem 'sqlite3', '~> 1.3.10', group: :production
+ gem 'sqlite3', '~> 1.3.10', group: :production
 
 # Use development for Heroku
-gem 'sqlite3', '~> 1.3.10', group: :development
+# gem 'sqlite3', '~> 1.3.10', group: :development
 
 # pg is required by Heroku
 gem 'pg', '0.18.1', group: :production
@@ -46,7 +46,7 @@ gem 'bcrypt', '~> 3.1.10'
 
 gem 'mini_portile', '~> 0.6.2'
 # puma is required by AWS Beanstalk
-# gem 'puma'
+  gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
