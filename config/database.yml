@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
+# For Heroku add "adaptor: postgresql"
+# Remove for AWS beanstalk
+  adaptor: postgresql
   database: db/production.sqlite3
