@@ -157,4 +157,4 @@
 	<div class="container-fluid" id="posfix">
 		<footer>
 			<ul id="nopad">
-				<li><p class="linktopgreen"><%= link_to "Back to Event", event_path( @scorecard.event ) %> | <%= link_to_unless(@scorecard.event.status == "closed", "Edit Scorecard", edit_scorecard_path(@scorecard)) %></p></li>
+				<li><p class="linktopgreen"><%= link_to "Back to Event", event_path( @scorecard.event ) %> | <%= link_to_unless(@scorecard.event.status == "closed", "Edit Scorecard", edit_scorecard_path(@scorecard)) %> | <%= link_to "Info", general_info_path %></p></li>

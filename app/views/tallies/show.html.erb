@@ -86,4 +86,4 @@
 	<div class="container-fluid" id="posfix">
 		<footer>
 			<ul id="nopad">
-				<li><p class="linktopgreen"><%= link_to "Back to Event", event_path( @tally.event ) %> | <%= link_to_unless(@tally.event.status == "closed", "Edit Tally", edit_tally_path(@tally)) %></p></li>
+				<li><p class="linktopgreen"><%= link_to "Back to Event", event_path( @tally.event ) %> | <%= link_to_unless(@tally.event.status == "closed", "Edit Tally", edit_tally_path(@tally)) %> | <%= link_to "Info", general_info_path %></p></li>
