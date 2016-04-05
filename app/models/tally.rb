@@ -106,6 +106,27 @@ class Tally < ActiveRecord::Base
             else
               titled = "Not this time"
             end
+            time_tally_tmp = time_tally_ms*10 + time_tally_s*1000 + time_tally_m*1000*60            
+            time_tally_ms = time_tally_tmp%1000
+            if time_tally_ms < 1
+              time_tally_ms = 0
+            else    
+              time_tally_s = (time_tally_tmp-time_tally_ms)/1000
+              time_tally_s = time_tally_s.round
+              if time_tally_s < 1
+                elapsed_s = 0
+              else
+                time_tally_m = (time_tally_s-(time_tally_s%60))/60
+                time_tally_m = time_tally_m.round
+                if time_tally_m < 1
+                  time_tally_m = 0
+                end
+              end
+            end
+            time_tally_ms = time_tally_ms/10
+            time_tally_ms = time_tally_ms.round
+            time_tally_s = time_tally_s-(time_tally_m*60)
+            time_tally_s = time_tally_s.round            
             time_tally_mstr = time_tally_m.to_s
             time_tally_sstr = time_tally_s.to_s
             time_tally_msstr = time_tally_ms.to_s
