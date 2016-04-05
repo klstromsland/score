@@ -11,10 +11,10 @@ gem 'rails_12factor', group: :production
 # Use sqlite3 as the database for Active Record
 
 # Use production for AWS Beanstalk
- gem 'sqlite3', '~> 1.3.10', group: :production
+# gem 'sqlite3', '~> 1.3.10', group: :production
 
 # Use development for Heroku
-# gem 'sqlite3', '~> 1.3.10', group: :development
+ gem 'sqlite3', '~> 1.3.10', group: :development
 
 # pg is required by Heroku
 gem 'pg', '0.18.1', group: :production
