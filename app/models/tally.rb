@@ -125,8 +125,12 @@ class Tally < ActiveRecord::Base
             end
             time_tally_ms = time_tally_ms/10
             time_tally_ms = time_tally_ms.round
+            if time_tally_ms == 100
+              time_tally_ms = 0
+              time_tally_s = time_tally_s + 1
+            end
             time_tally_s = time_tally_s-(time_tally_m*60)
-            time_tally_s = time_tally_s.round            
+            time_tally_s = time_tally_s.round
             time_tally_mstr = time_tally_m.to_s
             time_tally_sstr = time_tally_s.to_s
             time_tally_msstr = time_tally_ms.to_s
